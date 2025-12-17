@@ -6,6 +6,8 @@ import { TestimonialsSection } from '@/components/home/TestimonialsSection';
 import { CTASection } from '@/components/home/CTASection';
 import { LeadFormSection } from '@/components/home/LeadFormSection';
 
+import { ListYourBusSection } from '@/components/home/ListYourBusSection';
+
 const Index = () => {
   return (
     <Layout>
@@ -14,6 +16,7 @@ const Index = () => {
       <VehicleCategoriesSection />
       <HowItWorksSection />
       <TestimonialsSection />
+      <ListYourBusSection />
       <CTASection />
     </Layout>
   );

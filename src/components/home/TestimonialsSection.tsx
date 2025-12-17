@@ -2,21 +2,21 @@ import { Star, Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Rajesh Kumar',
-    role: 'Family Trip to Haridwar',
-    content: 'Excellent service! The bus was spotless, the driver was professional and patient with elders, and the journey was smooth end‑to‑end.',
+    name: 'Rajesh Mohanty',
+    role: 'Family Trip to Puri',
+    content: 'Excellent service! The bus was spotless, the driver was professional and patient with elders during our Jagannath Dham yatra.',
     rating: 5,
   },
   {
-    name: 'Priya Sharma',
+    name: 'Priya Das',
     role: 'Corporate Event Manager',
-    content: 'We book buses for monthly office outings. RentAnyBus shares options, prices and confirmations within the same day—zero follow‑ups needed.',
+    content: 'We book buses for monthly office outings in Bhubaneswar. RentAnyBus shares options, prices and confirmations within the same day.',
     rating: 5,
   },
   {
-    name: 'Amit Verma',
-    role: 'Wedding Transportation',
-    content: 'Booked 3 buses for our wedding guests. Every pickup was on time and coordinated. Their team handled changes calmly, which really reduced our stress.',
+    name: 'Amit Mishra',
+    role: 'Wedding in Cuttack',
+    content: 'Booked 3 buses for our wedding guests in Cuttack. Every pickup was on time and coordinated. Their team handled changes calmly.',
     rating: 5,
   },
 ];
@@ -34,7 +34,7 @@ export function TestimonialsSection() {
             What Our Customers Say
           </h2>
           <p className="text-muted-foreground text-lg">
-            Don't just take our word for it. Here's what travelers across India have to say about us.
+            Don't just take our word for it. Here's what travelers across Odisha have to say about us.
           </p>
         </div>
 

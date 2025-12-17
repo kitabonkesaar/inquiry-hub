@@ -14,6 +14,7 @@ export interface Vehicle {
   description: string;
   idealFor: string[];
   availability: 'available' | 'limited' | 'booked';
+  bus_layout?: '1x2' | '2x2';
 }
 
 export const vehicles: Vehicle[] = [

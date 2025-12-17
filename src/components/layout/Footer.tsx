@@ -4,6 +4,7 @@ import { Bus, Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lucide-r
 const footerLinks = {
   company: [
     { name: 'About Us', href: '/about' },
+    { name: 'List Your Bus', href: '/#list-your-bus' },
     { name: 'Our Fleet', href: '/vehicles' },
     { name: 'FAQs', href: '/faqs' },
     { name: 'Contact', href: '/contact' },
@@ -19,6 +20,7 @@ const footerLinks = {
     { name: 'Pricing Info', href: '/faqs' },
     { name: 'Cancellation Policy', href: '/faqs' },
     { name: 'Privacy Policy', href: '/privacy' },
+    { name: 'Admin Login', href: '/admin/auth' },
   ],
 };
 
@@ -35,11 +37,11 @@ export function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="font-bold text-lg leading-tight">RentAnyBus</span>
-                <span className="text-xs text-primary-foreground/70 leading-tight">Travel with Trust</span>
+                <span className="text-xs text-primary-foreground/70 leading-tight">Odisha's Premier Bus Rental</span>
               </div>
             </Link>
             <p className="text-primary-foreground/80 mb-6 max-w-sm">
-              Your trusted partner for bus and traveller rentals. We've been helping families, corporates, and groups travel comfortably for over 10 years.
+              Odisha's only specialized provider for Tirth Yatra, Corporate Tours, and School Picnics. Your premier partner for bus and tempo traveller rentals across Bhubaneswar, Cuttack, and Puri.
             </p>
             <div className="space-y-3">
               <a href="tel:+918249529220" className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
@@ -52,7 +54,7 @@ export function Footer() {
               </a>
               <div className="flex items-start gap-3 text-primary-foreground/80">
                 <MapPin className="w-5 h-5 mt-0.5" />
-                <span>123 Travel Hub, Transport Nagar,<br />New Delhi - 110001</span>
+                <span>FM Golei ,Balasore ,<br />Balasore  - 756001</span>
               </div>
             </div>
           </div>

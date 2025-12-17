@@ -1,0 +1,118 @@
+-- Seed vehicles data
+INSERT INTO public.vehicles (
+  name, 
+  type, 
+  category_id, -- Using category text in 'description' or ignoring, using our new fields
+  seating_capacity, 
+  price_display, 
+  amenities, 
+  images, 
+  description, 
+  ideal_for, 
+  availability_status,
+  is_ac -- deriving from category
+) VALUES
+(
+  'Luxury AC Sleeper Bus',
+  'bus',
+  NULL,
+  45,
+  '₹18,000',
+  ARRAY['Air Conditioning', 'Reclining Seats', 'Entertainment System', 'USB Charging', 'WiFi', 'Blankets'],
+  ARRAY['/images/bus-1.jpg'],
+  'Premium luxury sleeper bus with full air conditioning, individual entertainment screens, and maximum comfort for long-distance travel.',
+  ARRAY['Corporate Events', 'Long Distance Travel', 'Night Journeys', 'Group Tours'],
+  'available',
+  TRUE
+),
+(
+  'Executive AC Coach',
+  'bus',
+  NULL,
+  50,
+  '₹15,000',
+  ARRAY['Air Conditioning', 'Push-back Seats', 'Mic System', 'LCD TV', 'First Aid Kit'],
+  ARRAY['/images/bus-2.jpg'],
+  'Comfortable executive coach ideal for corporate outings, conferences, and group travel with premium amenities.',
+  ARRAY['Corporate Outings', 'Conferences', 'Educational Tours', 'Pilgrimages'],
+  'available',
+  TRUE
+),
+(
+  'Tempo Traveller 12 Seater',
+  'traveller',
+  NULL,
+  12,
+  '₹6,500',
+  ARRAY['Air Conditioning', 'Music System', 'Comfortable Seats', 'Luggage Space'],
+  ARRAY['/images/traveller-1.jpg'],
+  'Compact and comfortable 12-seater tempo traveller, perfect for small group trips and family outings.',
+  ARRAY['Family Trips', 'Small Group Tours', 'Airport Transfers', 'Local Sightseeing'],
+  'limited',
+  TRUE
+),
+(
+  'Tempo Traveller 17 Seater',
+  'traveller',
+  NULL,
+  17,
+  '₹8,000',
+  ARRAY['Air Conditioning', 'Music System', 'Push-back Seats', 'Icebox', 'Charging Points'],
+  ARRAY['/images/traveller-1.jpg'],
+  'Spacious 17-seater tempo traveller with premium seating and amenities for medium-sized groups.',
+  ARRAY['Extended Family Trips', 'Office Outings', 'Wedding Groups', 'Pilgrimages'],
+  'available',
+  TRUE
+),
+(
+  'Non-AC Deluxe Bus',
+  'bus',
+  NULL,
+  52,
+  '₹10,000',
+  ARRAY['Comfortable Seats', 'Mic System', 'First Aid Kit', 'Large Windows'],
+  ARRAY['/images/bus-2.jpg'],
+  'Budget-friendly deluxe bus with comfortable seating, ideal for school trips and budget group travel.',
+  ARRAY['School Trips', 'Budget Travel', 'Short Distance', 'Large Groups'],
+  'available',
+  FALSE
+),
+(
+  'Mini Bus 25 Seater',
+  'bus',
+  NULL,
+  25,
+  '₹12,000',
+  ARRAY['Air Conditioning', 'Push-back Seats', 'Music System', 'Curtains', 'First Aid'],
+  ARRAY['/images/bus-1.jpg'],
+  'Mid-sized AC mini bus perfect for medium groups seeking comfort without the need for a full-size coach.',
+  ARRAY['Medium Groups', 'Corporate Teams', 'Wedding Parties', 'Day Tours'],
+  'booked',
+  TRUE
+),
+(
+  'Tempo Traveller 26 Seater',
+  'traveller',
+  NULL,
+  26,
+  '₹10,500',
+  ARRAY['Air Conditioning', 'High-back Seats', 'LED TV', 'Music System', 'Large Luggage Space'],
+  ARRAY['/images/traveller-1.jpg'],
+  'Large capacity tempo traveller with premium features, ideal for bigger groups wanting flexibility.',
+  ARRAY['Large Family Groups', 'Office Teams', 'Extended Tours', 'Pilgrimages'],
+  'available',
+  TRUE
+),
+(
+  'Luxury Volvo Coach',
+  'bus',
+  NULL,
+  40,
+  '₹25,000',
+  ARRAY['Multi-zone AC', 'Semi-sleeper Seats', 'Personal Entertainment', 'WiFi', 'Refreshments', 'Toilet'],
+  ARRAY['/images/bus-2.jpg'],
+  'Ultra-premium Volvo coach with top-tier amenities including onboard toilet, WiFi, and personal entertainment systems.',
+  ARRAY['VIP Travel', 'Long Distance Luxury', 'Corporate Executives', 'Premium Tours'],
+  'limited',
+  TRUE
+);

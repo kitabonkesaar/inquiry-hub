@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Users, Snowflake, Wind, ArrowRight } from 'lucide-react';
+import { Users, Snowflake, Wind, ArrowRight, Grip } from 'lucide-react';
 import { Vehicle } from '@/data/vehicles';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -48,6 +48,10 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
           <div className="flex items-center gap-1 text-muted-foreground text-sm">
             <Users className="w-4 h-4" />
             <span>{vehicle.seatingCapacity} Seats</span>
+          </div>
+          <div className="flex items-center gap-1 text-muted-foreground text-sm">
+            <Grip className="w-4 h-4" />
+            <span>{vehicle.bus_layout || '2x2'}</span>
           </div>
           <div className="flex items-center gap-1 text-muted-foreground text-sm">
             {vehicle.category === 'ac' ? (

@@ -44,14 +44,15 @@ export default function InquiryPage() {
         full_name: formData.name,
         mobile: formData.phone,
         email: formData.email || null,
-        vehicle_type: formData.vehicleType,
+        vehicle_type: formData.vehicleType || null,
         preferred_vehicle: formData.preferredVehicle || null,
         journey_start_date: formData.startDate,
-        journey_end_date: formData.endDate,
-        pickup_location: formData.pickupLocation,
-        drop_location: formData.dropLocation,
-        passenger_count: parseInt(formData.passengers),
+        journey_end_date: formData.endDate || null,
+        pickup_location: formData.pickupLocation || null,
+        drop_location: formData.dropLocation || null,
+        passenger_count: parseInt(formData.passengers) || 0,
         message: formData.message || null,
+        status: 'new'
       });
 
       if (error) throw error;
@@ -64,8 +65,8 @@ export default function InquiryPage() {
     } catch (err) {
       console.error('Error submitting inquiry:', err);
       toast({
-        title: "Submission Failed",
-        description: "Please try again or contact us directly.",
+        title: "Error",
+        description: "Failed to submit inquiry. Please try again.",
         variant: "destructive"
       });
     } finally {
@@ -89,7 +90,7 @@ export default function InquiryPage() {
                 Thank you for your interest! Our team will review your requirements and contact you within <strong>30 minutes</strong> during business hours.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://wa.me/918249529220" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
                   <Button variant="accent" size="lg">
                     <MessageCircle className="w-5 h-5" />
                     Chat on WhatsApp
@@ -309,7 +310,7 @@ export default function InquiryPage() {
                   </p>
                   <div className="space-y-3">
                     <a
-                      href="tel:+918249529220"
+                      href="tel:+919876543210"
                       className="flex items-center gap-3 p-3 rounded-lg bg-muted hover:bg-muted/80 transition-colors"
                     >
                       <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
@@ -317,11 +318,11 @@ export default function InquiryPage() {
                       </div>
                       <div>
                         <p className="font-medium text-foreground">Call Us</p>
-                        <p className="text-sm text-muted-foreground">+91 82495 29220</p>
+                        <p className="text-sm text-muted-foreground">+91 98765 43210</p>
                       </div>
                     </a>
                     <a
-                      href="https://wa.me/918249529220"
+                      href="https://wa.me/919876543210"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-3 p-3 rounded-lg bg-muted hover:bg-muted/80 transition-colors"

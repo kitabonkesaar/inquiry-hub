@@ -21,8 +21,7 @@ export function VehicleCategoriesSection() {
             Choose the right vehicle for your group
           </h2>
           <p className="text-muted-foreground text-lg">
-            From compact tempo travellers to premium AC coaches, pick a category that matches your route,
-            group size and comfort expectations.
+            From compact tempo travellers for family trips in Puri to premium AC coaches for weddings in Bhubaneswar, pick a category that matches your route, group size and comfort expectations.
           </p>
         </div>
 

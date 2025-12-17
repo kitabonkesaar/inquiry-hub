@@ -1,10 +1,10 @@
 import { useState, useMemo } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { Filter, X, SlidersHorizontal } from 'lucide-react';
+import { Filter, X, SlidersHorizontal, RefreshCw } from 'lucide-react';
 import { Layout } from '@/components/layout/Layout';
 import { VehicleCard } from '@/components/vehicles/VehicleCard';
 import { Vehicle } from '@/data/vehicles';
-import { getAllVehicles } from '@/lib/vehicleStore';
+import { useVehicles } from '@/hooks/useVehicles';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -36,6 +36,7 @@ const filterOptions = {
 export default function VehiclesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [showFilters, setShowFilters] = useState(false);
+  const { vehicles: allVehicles, loading } = useVehicles();
 
   const [filters, setFilters] = useState({
     type: searchParams.get('type') || 'all',
@@ -45,8 +46,6 @@ export default function VehiclesPage() {
   });
 
   const filteredVehicles = useMemo(() => {
-    const allVehicles = getAllVehicles();
-
     return allVehicles.filter((vehicle) => {
       // Type filter
       if (filters.type !== 'all' && vehicle.type !== filters.type) return false;
@@ -68,7 +67,7 @@ export default function VehiclesPage() {
       
       return true;
     });
-  }, [filters]);
+  }, [filters, allVehicles]);
 
   const handleFilterChange = (key: string, value: string) => {
     const newFilters = { ...filters, [key]: value };
@@ -100,15 +99,15 @@ export default function VehiclesPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
-              Our Fleet
+              Premium Bus & Tempo Traveller Fleet in Odisha
             </h1>
-            <p className="text-lg text-primary-foreground/80">
-              Browse our collection of well-maintained buses and tempo travellers. 
-              Find the perfect vehicle for your journey.
+            <p className="text-xl text-primary-foreground/80">
+              Browse our verified fleet of luxury buses, AC coaches, and tempo travellers available for rent in Bhubaneswar, Puri, Cuttack, and across Odisha.
             </p>
           </div>
         </div>
       </section>
+
 
       {/* Filters & Content */}
       <section className="py-12 bg-background">
@@ -194,7 +193,12 @@ export default function VehiclesPage() {
               </div>
 
               {/* Grid */}
-              {filteredVehicles.length > 0 ? (
+              {loading ? (
+                <div className="flex flex-col items-center justify-center py-20 text-muted-foreground">
+                  <RefreshCw className="w-8 h-8 animate-spin mb-4" />
+                  <p>Loading vehicles...</p>
+                </div>
+              ) : filteredVehicles.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                   {filteredVehicles.map((vehicle) => (
                     <VehicleCard key={vehicle.id} vehicle={vehicle} />

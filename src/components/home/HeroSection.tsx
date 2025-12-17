@@ -29,21 +29,22 @@ export function HeroSection() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground/90 text-xs sm:text-sm font-medium mb-6 sm:mb-8 animate-fade-in">
             <Award className="w-4 h-4 text-accent" />
-            Trusted by 10,000+ travelers & 500+ companies across India
+            Odisha's Only Premier Bus Rental Provider
           </div>
 
           {/* Heading */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight mb-4 sm:mb-6 animate-slide-up">
-            Hassle‑Free Bus & Traveller
+            The Only Choice for
             <br className="hidden md:block" />
-            <span className="text-gradient">rentals across North India</span>
+            <span className="text-gradient">Group Travel in Odisha</span>
           </h1>
 
           {/* Subheading */}
           <p className="text-base md:text-lg lg:text-xl text-primary-foreground/80 max-w-2xl mb-8 sm:mb-10 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            One place for outstation tours, weddings, corporate events and school trips.
-            Get a verified vehicle, experienced driver and transparent pricing—within{' '}
-            <span className="font-semibold">30 minutes</span> of your inquiry.
+            We are the only provider offering dedicated fleet services for <strong>Tirth Yatra</strong>, <strong>Corporate Tours</strong>, and <strong>School/College Picnics</strong>.
+            <span className="block mt-2">
+              Experience the difference with Odisha's most trusted transport partner.
+            </span>
           </p>
 
           {/* CTA Buttons */}

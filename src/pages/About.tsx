@@ -1,194 +1,123 @@
-import { Link } from 'react-router-dom';
-import { Award, Users, MapPin, Shield, Clock, Heart, ArrowRight } from 'lucide-react';
 import { Layout } from '@/components/layout/Layout';
-import { Button } from '@/components/ui/button';
+import { Shield, Users, Award, MapPin, Check } from 'lucide-react';
 
-const stats = [
-  { value: '10+', label: 'Years Experience' },
-  { value: '500+', label: 'Happy Clients' },
-  { value: '50+', label: 'Vehicles' },
-  { value: '100+', label: 'Cities Served' },
-];
-
-const values = [
-  {
-    icon: Shield,
-    title: 'Safety First',
-    description: 'All our vehicles are regularly maintained, verified, and fully insured for your peace of mind.',
-  },
-  {
-    icon: Clock,
-    title: 'Reliability',
-    description: 'We pride ourselves on punctuality. Our vehicles arrive on time, every time.',
-  },
-  {
-    icon: Heart,
-    title: 'Customer Care',
-    description: "From your first inquiry to the end of your journey, we're here to support you.",
-  },
-  {
-    icon: Award,
-    title: 'Quality Service',
-    description: 'Professional drivers, clean vehicles, and attention to detail in everything we do.',
-  },
-];
-
-export default function AboutPage() {
+export default function About() {
   return (
     <Layout>
-      {/* Hero */}
-      <section className="hero-gradient py-24">
+      {/* Hero Section */}
+      <section className="hero-gradient py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1 rounded-full bg-primary-foreground/10 text-primary-foreground text-sm font-medium mb-6">
-              About Us
-            </span>
             <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
-              Your Trusted Partner for <span className="text-gradient">Safe Journeys</span>
+              About RentAnyBus
             </h1>
-            <p className="text-lg text-primary-foreground/80">
-              For over a decade, RentAnyBus has been helping families, corporates, and tour groups travel across India with comfort, safety, and reliability.
+            <p className="text-xl text-primary-foreground/80 leading-relaxed">
+              We are Odisha's leading bus and tempo traveller rental service, dedicated to making group travel seamless, comfortable, and affordable across the state.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-12 bg-card border-b border-border">
+      {/* Main Content */}
+      <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-4xl md:text-5xl font-bold text-accent mb-2">{stat.value}</p>
-                <p className="text-muted-foreground">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Story */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-                Our Story
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                A Journey Built on Trust
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+            <div className="space-y-6">
+              <h2 className="text-3xl font-bold text-foreground">
+                Odisha's Only Dedicated Bus Rental Service
               </h2>
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  RentAnyBus started in 2013 with a simple mission: to make bus and traveler rentals easy, transparent, and reliable for everyone. What began with just 3 vehicles has grown into a fleet of over 50 well-maintained buses and tempo travellers.
-                </p>
-                <p>
-                  Our founder, having experienced the frustration of unreliable rental services during family trips, decided to build a company that puts customer trust and safety above everything else.
-                </p>
-                <p>
-                  Today, we serve clients across 100+ cities in India, from family pilgrimages to corporate events, from wedding transportation to school excursions. Every journey is personal to us.
-                </p>
-              </div>
-              <Link to="/vehicles" className="inline-block mt-8">
-                <Button variant="accent" size="lg">
-                  Explore Our Fleet
-                  <ArrowRight className="w-5 h-5" />
-                </Button>
-              </Link>
+              <p className="text-muted-foreground text-lg">
+                RentAnyBus stands alone as the premier specialized provider for group transportation in Odisha. We are the only service fully dedicated to:
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                   <div className="mt-1 p-1 bg-accent/10 rounded-full"><Check className="w-4 h-4 text-accent" /></div>
+                   <div>
+                     <strong className="block text-foreground">Tirth Yatra & Pilgrimages</strong>
+                     <span className="text-muted-foreground">Specialized fleet for Jagannath Dham, Lingaraj, and extended religious tours.</span>
+                   </div>
+                </li>
+                <li className="flex items-start gap-3">
+                   <div className="mt-1 p-1 bg-accent/10 rounded-full"><Check className="w-4 h-4 text-accent" /></div>
+                   <div>
+                     <strong className="block text-foreground">Corporate Tours</strong>
+                     <span className="text-muted-foreground">Premium AC coaches with Wi-Fi for offsites and conferences.</span>
+                   </div>
+                </li>
+                <li className="flex items-start gap-3">
+                   <div className="mt-1 p-1 bg-accent/10 rounded-full"><Check className="w-4 h-4 text-accent" /></div>
+                   <div>
+                     <strong className="block text-foreground">School & College Picnics</strong>
+                     <span className="text-muted-foreground">Safe, verified buses with experienced drivers for student excursions.</span>
+                   </div>
+                </li>
+              </ul>
             </div>
-            <div className="relative">
-              <div className="aspect-square rounded-2xl bg-muted overflow-hidden">
-                <img
-                  src="/placeholder.svg"
-                  alt="Our team"
-                  className="w-full h-full object-cover"
-                />
+            <div className="grid grid-cols-2 gap-6">
+              <div className="p-6 bg-accent/10 rounded-2xl">
+                <h3 className="text-4xl font-bold text-accent mb-2">10+</h3>
+                <p className="font-medium">Years of Experience</p>
               </div>
-              <div className="absolute -bottom-6 -left-6 p-6 rounded-xl bg-accent text-accent-foreground shadow-lg">
-                <p className="text-4xl font-bold">10+</p>
-                <p className="text-sm">Years of Trust</p>
+              <div className="p-6 bg-primary/10 rounded-2xl">
+                <h3 className="text-4xl font-bold text-primary mb-2">500+</h3>
+                <p className="font-medium">Happy Corporate Clients</p>
+              </div>
+              <div className="p-6 bg-success/10 rounded-2xl">
+                <h3 className="text-4xl font-bold text-success mb-2">10k+</h3>
+                <p className="font-medium">Successful Trips</p>
+              </div>
+              <div className="p-6 bg-warning/10 rounded-2xl">
+                <h3 className="text-4xl font-bold text-warning mb-2">50+</h3>
+                <p className="font-medium">Cities Covered</p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Values */}
-      <section className="py-24 bg-muted/50">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-              Our Values
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              What Drives Us
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              These core values guide every decision we make and every service we provide.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value) => (
-              <div
-                key={value.title}
-                className="p-8 rounded-2xl bg-card border border-border card-shadow text-center"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="w-7 h-7 text-accent" />
+          {/* Why Choose Us */}
+          <div className="mb-20">
+            <h2 className="text-3xl font-bold text-center mb-12">Why Rent With Us?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="p-8 rounded-2xl bg-card border border-border card-shadow hover:shadow-lg transition-shadow">
+                <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mb-6">
+                  <Shield className="w-7 h-7 text-accent" />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-2">{value.title}</h3>
-                <p className="text-muted-foreground">{value.description}</p>
+                <h3 className="text-xl font-bold mb-4">Safety First</h3>
+                <p className="text-muted-foreground">
+                  Every bus and traveller in our fleet undergoes rigorous safety checks. Our drivers are verified, experienced, and well-versed with Odisha's routes.
+                </p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Regions */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-              Coverage
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Where We Operate
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              We provide services across major cities and popular tourist destinations in North India.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            {['Delhi NCR', 'Rajasthan', 'Uttarakhand', 'Himachal Pradesh', 'Punjab', 'Haryana', 'Uttar Pradesh', 'Madhya Pradesh'].map((region) => (
-              <div
-                key={region}
-                className="flex items-center gap-2 px-6 py-3 rounded-full bg-card border border-border"
-              >
-                <MapPin className="w-4 h-4 text-accent" />
-                <span className="font-medium text-foreground">{region}</span>
+              <div className="p-8 rounded-2xl bg-card border border-border card-shadow hover:shadow-lg transition-shadow">
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+                  <Award className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">Premium Fleet</h3>
+                <p className="text-muted-foreground">
+                  From 13-seater Winger to 50-seater Volvo Multi-axle buses, we have the widest range of luxury and standard vehicles in Bhubaneswar and Cuttack.
+                </p>
               </div>
-            ))}
+              <div className="p-8 rounded-2xl bg-card border border-border card-shadow hover:shadow-lg transition-shadow">
+                <div className="w-14 h-14 rounded-full bg-success/10 flex items-center justify-center mb-6">
+                  <MapPin className="w-7 h-7 text-success" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">Local Expertise</h3>
+                <p className="text-muted-foreground">
+                  We know Odisha best. Get expert route planning for Golden Triangle tours (Bhubaneswar-Puri-Konark), Chilika Lake, and tribal tours.
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* CTA */}
-      <section className="py-24 hero-gradient">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-            Ready to Start Your Journey?
-          </h2>
-          <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-            Let us help you plan your next trip. Get a free quote today.
-          </p>
-          <Link to="/inquiry">
-            <Button variant="hero" size="xl">
-              Get Free Quote
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-          </Link>
+          {/* Areas We Serve */}
+          <div className="bg-muted/30 rounded-3xl p-8 md:p-12">
+            <h2 className="text-3xl font-bold text-center mb-8">Serving All Across Odisha</h2>
+            <div className="flex flex-wrap justify-center gap-4">
+              {['Bhubaneswar', 'Cuttack', 'Puri', 'Rourkela', 'Sambalpur', 'Balasore', 'Berhampur', 'Baripada', 'Angul', 'Jharsuguda'].map((city) => (
+                <span key={city} className="px-6 py-3 rounded-full bg-background border border-border font-medium shadow-sm">
+                  {city}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </Layout>
