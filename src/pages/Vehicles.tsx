@@ -3,7 +3,8 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { Filter, X, SlidersHorizontal } from 'lucide-react';
 import { Layout } from '@/components/layout/Layout';
 import { VehicleCard } from '@/components/vehicles/VehicleCard';
-import { vehicles, Vehicle } from '@/data/vehicles';
+import { Vehicle } from '@/data/vehicles';
+import { getAllVehicles } from '@/lib/vehicleStore';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -44,7 +45,9 @@ export default function VehiclesPage() {
   });
 
   const filteredVehicles = useMemo(() => {
-    return vehicles.filter((vehicle) => {
+    const allVehicles = getAllVehicles();
+
+    return allVehicles.filter((vehicle) => {
       // Type filter
       if (filters.type !== 'all' && vehicle.type !== filters.type) return false;
       

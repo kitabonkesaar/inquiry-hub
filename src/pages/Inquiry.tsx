@@ -65,7 +65,7 @@ export default function InquiryPage() {
                 Thank you for your interest! Our team will review your requirements and contact you within <strong>30 minutes</strong> during business hours.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/918249529220" target="_blank" rel="noopener noreferrer">
                   <Button variant="accent" size="lg">
                     <MessageCircle className="w-5 h-5" />
                     Chat on WhatsApp
@@ -131,7 +131,7 @@ export default function InquiryPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        placeholder="+91 98765 43210"
+                        placeholder="+91 82495 29220"
                       />
                     </div>
                     <div className="md:col-span-2">
@@ -285,7 +285,7 @@ export default function InquiryPage() {
                   </p>
                   <div className="space-y-3">
                     <a
-                      href="tel:+919876543210"
+                      href="tel:+918249529220"
                       className="flex items-center gap-3 p-3 rounded-lg bg-muted hover:bg-muted/80 transition-colors"
                     >
                       <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
@@ -293,11 +293,11 @@ export default function InquiryPage() {
                       </div>
                       <div>
                         <p className="font-medium text-foreground">Call Us</p>
-                        <p className="text-sm text-muted-foreground">+91 98765 43210</p>
+                        <p className="text-sm text-muted-foreground">+91 82495 29220</p>
                       </div>
                     </a>
                     <a
-                      href="https://wa.me/919876543210"
+                      href="https://wa.me/918249529220"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-3 p-3 rounded-lg bg-muted hover:bg-muted/80 transition-colors"

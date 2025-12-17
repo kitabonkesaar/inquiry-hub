@@ -18,10 +18,11 @@ export function VehicleCategoriesSection() {
             Our Fleet
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Choose Your Perfect Ride
+            Choose the right vehicle for your group
           </h2>
           <p className="text-muted-foreground text-lg">
-            From compact travelers to luxury coaches, we have the right vehicle for every group size and occasion.
+            From compact tempo travellers to premium AC coaches, pick a category that matches your route,
+            group size and comfort expectations.
           </p>
         </div>
 

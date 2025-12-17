@@ -3,23 +3,23 @@ import { Search, FileText, PhoneCall, MapPin } from 'lucide-react';
 const steps = [
   {
     icon: Search,
-    title: 'Browse Vehicles',
-    description: 'Explore our fleet of buses and travelers. Check specifications, amenities, and availability.',
+    title: 'Share Your Plan',
+    description: 'Tell us your dates, pickup city and group size. We help you choose the ideal vehicle type.',
   },
   {
     icon: FileText,
     title: 'Submit Inquiry',
-    description: 'Fill out a simple form with your travel details. No payment required at this stage.',
+    description: 'Fill a simple form in under a minute. No advance payment or documents needed to get a quote.',
   },
   {
     icon: PhoneCall,
-    title: 'Get Quote',
-    description: 'Our team contacts you within 30 minutes with the best price and availability confirmation.',
+    title: 'Receive Best Quote',
+    description: 'Our team calls you within 30 minutes with options, photos and transparent, all‑inclusive pricing.',
   },
   {
     icon: MapPin,
     title: 'Start Journey',
-    description: 'Confirm your booking, and our verified vehicle arrives at your doorstep on time.',
+    description: 'Confirm in one call. Your verified vehicle arrives on time at your doorstep—just board and relax.',
   },
 ];
 
@@ -33,10 +33,10 @@ export function HowItWorksSection() {
             Simple Process
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            How It Works
+            From inquiry to journey in four simple steps
           </h2>
           <p className="text-muted-foreground text-lg">
-            Booking a bus has never been easier. Four simple steps to your perfect journey.
+            We remove the back‑and‑forth calls and confusion so you can focus on the trip—not the transport.
           </p>
         </div>
 

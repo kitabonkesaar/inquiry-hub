@@ -168,7 +168,7 @@ export default function FAQsPage() {
                   <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
-              <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/918249529220" target="_blank" rel="noopener noreferrer">
                 <Button variant="hero-outline" size="lg">
                   WhatsApp Us
                 </Button>

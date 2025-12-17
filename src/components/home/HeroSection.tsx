@@ -27,20 +27,23 @@ export function HeroSection() {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-4xl">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground/90 text-sm font-medium mb-8 animate-fade-in">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground/90 text-xs sm:text-sm font-medium mb-6 sm:mb-8 animate-fade-in">
             <Award className="w-4 h-4 text-accent" />
-            Trusted by 10,000+ travelers across India
+            Trusted by 10,000+ travelers & 500+ companies across India
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-primary-foreground leading-tight mb-6 animate-slide-up">
-            Your Journey,{' '}
-            <span className="text-gradient">Our Commitment</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight mb-4 sm:mb-6 animate-slide-up">
+            Hassle‑Free Bus & Traveller
+            <br className="hidden md:block" />
+            <span className="text-gradient">rentals across North India</span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mb-10 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            Premium buses and tempo travellers for every occasion. From family trips to corporate events, we ensure safe, comfortable, and memorable journeys.
+          <p className="text-base md:text-lg lg:text-xl text-primary-foreground/80 max-w-2xl mb-8 sm:mb-10 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+            One place for outstation tours, weddings, corporate events and school trips.
+            Get a verified vehicle, experienced driver and transparent pricing—within{' '}
+            <span className="font-semibold">30 minutes</span> of your inquiry.
           </p>
 
           {/* CTA Buttons */}
@@ -60,7 +63,7 @@ export function HeroSection() {
 
           {/* Trust Indicators */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 animate-slide-up" style={{ animationDelay: '0.3s' }}>
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10">
+            <div className="flex items-center gap-4 p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 backdrop-blur-sm">
               <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
                 <Shield className="w-6 h-6 text-accent" />
               </div>
@@ -69,7 +72,7 @@ export function HeroSection() {
                 <p className="text-sm text-primary-foreground/60">100% Safety Certified</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10">
+            <div className="flex items-center gap-4 p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 backdrop-blur-sm">
               <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
                 <Clock className="w-6 h-6 text-accent" />
               </div>
@@ -78,7 +81,7 @@ export function HeroSection() {
                 <p className="text-sm text-primary-foreground/60">Within 30 minutes</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10">
+            <div className="flex items-center gap-4 p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 backdrop-blur-sm">
               <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
                 <Award className="w-6 h-6 text-accent" />
               </div>

@@ -4,19 +4,19 @@ const testimonials = [
   {
     name: 'Rajesh Kumar',
     role: 'Family Trip to Haridwar',
-    content: 'Excellent service! The bus was clean, driver was professional, and the journey was smooth. Highly recommend for family pilgrimages.',
+    content: 'Excellent service! The bus was spotless, the driver was professional and patient with elders, and the journey was smooth end‑to‑end.',
     rating: 5,
   },
   {
     name: 'Priya Sharma',
     role: 'Corporate Event Manager',
-    content: 'We regularly book buses for our office outings. RentAnyBus has never disappointed us. Quick response and reliable vehicles every time.',
+    content: 'We book buses for monthly office outings. RentAnyBus shares options, prices and confirmations within the same day—zero follow‑ups needed.',
     rating: 5,
   },
   {
     name: 'Amit Verma',
     role: 'Wedding Transportation',
-    content: 'Booked 3 buses for our wedding guests. Everything was perfectly coordinated. The team went above and beyond to ensure smooth operations.',
+    content: 'Booked 3 buses for our wedding guests. Every pickup was on time and coordinated. Their team handled changes calmly, which really reduced our stress.',
     rating: 5,
   },
 ];

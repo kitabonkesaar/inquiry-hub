@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Users, Snowflake, Wind, Check, Calendar, Phone, MessageCircle } from 'lucide-react';
 import { Layout } from '@/components/layout/Layout';
-import { vehicles } from '@/data/vehicles';
+import { getAllVehicles } from '@/lib/vehicleStore';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { VehicleCard } from '@/components/vehicles/VehicleCard';
@@ -15,7 +15,8 @@ const availabilityConfig = {
 
 export default function VehicleDetailPage() {
   const { id } = useParams();
-  const vehicle = vehicles.find((v) => v.id === id);
+  const allVehicles = getAllVehicles();
+  const vehicle = allVehicles.find((v) => v.id === id);
 
   if (!vehicle) {
     return (
@@ -34,7 +35,7 @@ export default function VehicleDetailPage() {
   }
 
   const availability = availabilityConfig[vehicle.availability];
-  const similarVehicles = vehicles
+  const similarVehicles = allVehicles
     .filter((v) => v.id !== vehicle.id && v.type === vehicle.type)
     .slice(0, 3);
 
@@ -160,13 +161,13 @@ export default function VehicleDetailPage() {
                     Request Quote
                   </Button>
                 </Link>
-                <a href="tel:+919876543210" className="flex-1">
+                <a href="tel:+918249529220" className="flex-1">
                   <Button variant="outline" size="lg" className="w-full">
                     <Phone className="w-4 h-4" />
                     Call Now
                   </Button>
                 </a>
-                <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/918249529220" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="lg">
                     <MessageCircle className="w-4 h-4" />
                   </Button>

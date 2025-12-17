@@ -14,10 +14,12 @@ export function CTASection() {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-6">
-            Ready to Plan Your <span className="text-gradient">Perfect Trip?</span>
+            Ready to plan your next{' '}
+            <span className="text-gradient">group journey?</span>
           </h2>
           <p className="text-lg md:text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
-            Get a free, no-obligation quote within 30 minutes. Our team is ready to help you find the perfect vehicle for your journey.
+            Get a free, no‑obligation quote within 30 minutes. Share your route once and we&apos;ll take care of vehicles,
+            timing and coordination for the entire trip.
           </p>
 
           {/* CTA Buttons */}
@@ -28,7 +30,7 @@ export function CTASection() {
                 <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>
-            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/918249529220" target="_blank" rel="noopener noreferrer">
               <Button variant="hero-outline" size="xl" className="w-full sm:w-auto">
                 <MessageCircle className="w-5 h-5" />
                 WhatsApp Us
@@ -38,9 +40,9 @@ export function CTASection() {
 
           {/* Contact Info */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-primary-foreground/70">
-            <a href="tel:+919876543210" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
+            <a href="tel:+918249529220" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
               <Phone className="w-5 h-5" />
-              +91 98765 43210
+              +91 82495 29220
             </a>
             <span className="hidden sm:block">•</span>
             <span>Available 24/7 for inquiries</span>

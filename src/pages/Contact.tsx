@@ -46,7 +46,7 @@ export default function ContactPage() {
             {/* Contact Info Cards */}
             <div className="space-y-6">
               <a
-                href="tel:+919876543210"
+                href="tel:+918249529220"
                 className="flex items-start gap-4 p-6 rounded-2xl bg-card border border-border card-shadow hover:card-hover-shadow transition-all"
               >
                 <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
@@ -54,13 +54,13 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">Call Us</h3>
-                  <p className="text-accent font-medium">+91 98765 43210</p>
+                  <p className="text-accent font-medium">+91 82495 29220</p>
                   <p className="text-sm text-muted-foreground mt-1">Mon-Sun, 6 AM - 10 PM</p>
                 </div>
               </a>
 
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/918249529220"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-4 p-6 rounded-2xl bg-card border border-border card-shadow hover:card-hover-shadow transition-all"
@@ -132,7 +132,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <Label htmlFor="phone">Phone Number *</Label>
-                      <Input id="phone" name="phone" type="tel" required placeholder="+91 98765 43210" />
+                      <Input id="phone" name="phone" type="tel" required placeholder="+91 82495 29220" />
                     </div>
                     <div className="md:col-span-2">
                       <Label htmlFor="email">Email Address</Label>

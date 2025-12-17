@@ -42,9 +42,9 @@ export function Footer() {
               Your trusted partner for bus and traveller rentals. We've been helping families, corporates, and groups travel comfortably for over 10 years.
             </p>
             <div className="space-y-3">
-              <a href="tel:+919876543210" className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <a href="tel:+918249529220" className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 <Phone className="w-5 h-5" />
-                +91 98765 43210
+                +91 82495 29220
               </a>
               <a href="mailto:info@rentanybus.com" className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 <Mail className="w-5 h-5" />
