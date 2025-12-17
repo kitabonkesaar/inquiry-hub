@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { vehicles } from '@/data/vehicles';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 export default function InquiryPage() {
   const [searchParams] = useSearchParams();
@@ -38,15 +39,38 @@ export default function InquiryPage() {
     e.preventDefault();
     setLoading(true);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const { error } = await supabase.from('inquiries').insert({
+        full_name: formData.name,
+        mobile: formData.phone,
+        email: formData.email || null,
+        vehicle_type: formData.vehicleType,
+        preferred_vehicle: formData.preferredVehicle || null,
+        journey_start_date: formData.startDate,
+        journey_end_date: formData.endDate,
+        pickup_location: formData.pickupLocation,
+        drop_location: formData.dropLocation,
+        passenger_count: parseInt(formData.passengers),
+        message: formData.message || null,
+      });
 
-    setLoading(false);
-    setSubmitted(true);
-    toast({
-      title: "Inquiry Submitted!",
-      description: "Our team will contact you within 30 minutes.",
-    });
+      if (error) throw error;
+
+      setSubmitted(true);
+      toast({
+        title: "Inquiry Submitted!",
+        description: "Our team will contact you within 30 minutes.",
+      });
+    } catch (err) {
+      console.error('Error submitting inquiry:', err);
+      toast({
+        title: "Submission Failed",
+        description: "Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
