@@ -42,7 +42,7 @@ export function VehicleCategoriesSection() {
               <Link
                 key={category.id}
                 to={`/vehicles?category=${category.id}`}
-                className="group relative p-8 rounded-3xl bg-card border border-border/50 shadow-sm hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full overflow-hidden"
+                className="group relative p-8 rounded-3xl bg-card border border-border/50 shadow-sm hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-forwards"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Hover Gradient Overlay */}

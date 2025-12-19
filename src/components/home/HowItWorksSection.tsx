@@ -48,10 +48,11 @@ export function HowItWorksSection() {
           {steps.map((step, index) => (
             <div
               key={step.title}
-              className="relative text-center group"
+              className="relative text-center group animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-forwards"
+              style={{ animationDelay: `${index * 0.15}s` }}
             >
               {/* Step Number */}
-              <div className="w-32 h-32 mx-auto mb-6 relative">
+              <div className="w-32 h-32 mx-auto mb-6 relative transition-transform duration-300 group-hover:scale-105">
                 <div className="absolute inset-0 rounded-full bg-accent/10 group-hover:bg-accent/20 transition-colors" />
                 <div className="absolute inset-4 rounded-full bg-card border-2 border-accent flex items-center justify-center shadow-lg">
                   <step.icon className="w-10 h-10 text-accent" />

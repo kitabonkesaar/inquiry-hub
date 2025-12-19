@@ -54,8 +54,12 @@ export function FeaturedFleetSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {fleet.map((item) => (
-                <div key={item.id} className="group relative rounded-2xl overflow-hidden aspect-[4/5] cursor-pointer shadow-lg hover:shadow-xl transition-all">
+            {fleet.map((item, index) => (
+                <div 
+                    key={item.id} 
+                    className="group relative rounded-2xl overflow-hidden aspect-[4/5] cursor-pointer shadow-lg hover:shadow-xl transition-all animate-in fade-in zoom-in-95 duration-700 fill-mode-forwards"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                >
                     <img 
                         src={item.image} 
                         alt={item.title}

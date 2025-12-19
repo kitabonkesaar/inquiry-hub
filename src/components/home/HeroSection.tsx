@@ -64,7 +64,7 @@ export function HeroSection() {
 
           {/* Trust Indicators */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 animate-slide-up" style={{ animationDelay: '0.3s' }}>
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 backdrop-blur-sm">
+            <div className="flex items-center gap-4 p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 backdrop-blur-sm hover:bg-primary-foreground/10 transition-colors duration-300">
               <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
                 <Shield className="w-6 h-6 text-accent" />
               </div>
@@ -73,7 +73,7 @@ export function HeroSection() {
                 <p className="text-sm text-primary-foreground/60">100% Safety Certified</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 backdrop-blur-sm">
+            <div className="flex items-center gap-4 p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 backdrop-blur-sm hover:bg-primary-foreground/10 transition-colors duration-300">
               <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
                 <Clock className="w-6 h-6 text-accent" />
               </div>
@@ -82,7 +82,7 @@ export function HeroSection() {
                 <p className="text-sm text-primary-foreground/60">Within 30 minutes</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 backdrop-blur-sm">
+            <div className="flex items-center gap-4 p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 backdrop-blur-sm hover:bg-primary-foreground/10 transition-colors duration-300">
               <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
                 <Award className="w-6 h-6 text-accent" />
               </div>

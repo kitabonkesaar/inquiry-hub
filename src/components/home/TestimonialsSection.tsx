@@ -43,7 +43,7 @@ export function TestimonialsSection() {
           {testimonials.map((testimonial, index) => (
             <div
               key={testimonial.name}
-              className="relative p-8 rounded-2xl bg-card border border-border card-shadow hover:card-hover-shadow transition-all duration-500"
+              className="relative p-8 rounded-2xl bg-card border border-border card-shadow hover:card-hover-shadow transition-all duration-500 hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-forwards"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Quote Icon */}
