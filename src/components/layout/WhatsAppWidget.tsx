@@ -11,7 +11,8 @@ export function WhatsAppWidget() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 animate-in fade-in zoom-in duration-300 print:hidden"
+      className="fixed bottom-20 lg:bottom-6 right-6 z-50 flex flex-col items-end gap-2 group"
+      initial={{ scale: 0, opacity: 0 }}
       aria-label="Chat on WhatsApp"
     >
       <Button

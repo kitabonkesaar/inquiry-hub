@@ -93,6 +93,9 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
       },
+      transitionTimingFunction: {
+        'spring': 'cubic-bezier(0.32, 0.725, 0.25, 1)',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
