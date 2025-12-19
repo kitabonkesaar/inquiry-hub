@@ -14,7 +14,7 @@ export function BottomNav() {
       icon: Home,
     },
     {
-      name: 'Fleet',
+      name: 'Buses',
       href: '/vehicles',
       icon: Bus,
     },

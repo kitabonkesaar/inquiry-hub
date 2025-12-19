@@ -5,7 +5,7 @@ const footerLinks = {
   company: [
     { name: 'About Us', href: '/about' },
     { name: 'List Your Bus', href: '/#list-your-bus' },
-    { name: 'Our Fleet', href: '/vehicles' },
+    { name: 'Our Buses', href: '/vehicles' },
     { name: 'FAQs', href: '/faqs' },
     { name: 'Contact', href: '/contact' },
   ],
