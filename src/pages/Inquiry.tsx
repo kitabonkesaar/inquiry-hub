@@ -90,7 +90,7 @@ export default function InquiryPage() {
                 Thank you for your interest! Our team will review your requirements and contact you within <strong>30 minutes</strong> during business hours.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/918249529220" target="_blank" rel="noopener noreferrer">
                   <Button variant="accent" size="lg">
                     <MessageCircle className="w-5 h-5" />
                     Chat on WhatsApp
@@ -303,36 +303,33 @@ export default function InquiryPage() {
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
                 {/* Quick Contact */}
-                <div className="p-6 rounded-2xl bg-card border border-border card-shadow">
-                  <h3 className="font-semibold text-foreground mb-4">Need Help?</h3>
-                  <p className="text-muted-foreground text-sm mb-4">
-                    Our team is available to assist you with your booking.
-                  </p>
+                <div className="bg-card rounded-xl border border-border p-6 space-y-4">
+                  <h3 className="font-semibold text-foreground">Need Immediate Help?</h3>
                   <div className="space-y-3">
                     <a
-                      href="tel:+919876543210"
-                      className="flex items-center gap-3 p-3 rounded-lg bg-muted hover:bg-muted/80 transition-colors"
+                      href="tel:+918249529220"
+                      className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
                     >
-                      <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
                         <Phone className="w-5 h-5 text-accent" />
                       </div>
                       <div>
-                        <p className="font-medium text-foreground">Call Us</p>
-                        <p className="text-sm text-muted-foreground">+91 98765 43210</p>
+                        <p className="font-medium text-sm text-foreground">Call Us Now</p>
+                        <p className="text-sm text-muted-foreground">+91 82495 29220</p>
                       </div>
                     </a>
                     <a
-                      href="https://wa.me/919876543210"
+                      href="https://wa.me/918249529220"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-3 rounded-lg bg-muted hover:bg-muted/80 transition-colors"
+                      className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
                     >
-                      <div className="w-10 h-10 rounded-full bg-success/10 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full bg-success/10 flex items-center justify-center shrink-0">
                         <MessageCircle className="w-5 h-5 text-success" />
                       </div>
                       <div>
-                        <p className="font-medium text-foreground">WhatsApp</p>
-                        <p className="text-sm text-muted-foreground">Quick Response</p>
+                        <p className="font-medium text-sm text-foreground">WhatsApp Us</p>
+                        <p className="text-sm text-muted-foreground">Chat for Quote</p>
                       </div>
                     </a>
                   </div>

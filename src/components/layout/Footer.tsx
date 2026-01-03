@@ -15,20 +15,13 @@ const footerLinks = {
     { name: 'Tempo Travellers', href: '/vehicles?type=traveller' },
     { name: 'All Vehicles', href: '/vehicles' },
   ],
-  support: [
-    { name: 'How It Works', href: '/faqs' },
-    { name: 'Pricing Info', href: '/faqs' },
-    { name: 'Cancellation Policy', href: '/faqs' },
-    { name: 'Privacy Policy', href: '/privacy' },
-    { name: 'Admin Login', href: '/admin/auth' },
-  ],
 };
 
 export function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-6">
@@ -77,19 +70,6 @@ export function Footer() {
             <h4 className="font-semibold mb-4">Vehicles</h4>
             <ul className="space-y-3">
               {footerLinks.vehicles.map((link) => (
-                <li key={link.name}>
-                  <Link to={link.href} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4">Support</h4>
-            <ul className="space-y-3">
-              {footerLinks.support.map((link) => (
                 <li key={link.name}>
                   <Link to={link.href} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                     {link.name}

@@ -30,7 +30,7 @@ export function CTASection() {
                 <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>
-            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/918249529220" target="_blank" rel="noopener noreferrer">
               <Button variant="hero-outline" size="xl" className="w-full sm:w-auto">
                 <MessageCircle className="w-5 h-5" />
                 WhatsApp Us
@@ -40,7 +40,7 @@ export function CTASection() {
 
           {/* Contact Info */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-primary-foreground/70">
-            <a href="tel:+919876543210" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
+            <a href="tel:+918249529220" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
               <Phone className="w-5 h-5" />
               +91 82495 29220
             </a>

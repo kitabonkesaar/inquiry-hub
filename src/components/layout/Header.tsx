@@ -50,7 +50,7 @@ export function Header() {
 
         {/* CTA Buttons */}
         <div className="hidden lg:flex items-center gap-3">
-          <a href="tel:+919876543210" className="flex items-center gap-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors">
+          <a href="tel:+918249529220" className="flex items-center gap-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors">
             <Phone className="w-4 h-4" />
             +91 82495 29220
           </a>
@@ -95,9 +95,9 @@ export function Header() {
               </Link>
             ))}
             <div className="pt-4 border-t border-border space-y-3">
-              <a href="tel:+919876543210" className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-foreground/70">
+              <a href="tel:+918249529220" className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-foreground/70">
                 <Phone className="w-4 h-4" />
-                +91 98765 43210
+                +91 82495 29220
               </a>
               <Link to="/inquiry" onClick={() => setMobileMenuOpen(false)}>
                 <Button variant="accent" size="lg" className="w-full">
