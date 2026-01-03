@@ -8,6 +8,13 @@ import { Layout } from '@/components/layout/Layout';
 import { useVehicles } from '@/hooks/useVehicles';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 import { VehicleCard } from '@/components/vehicles/VehicleCard';
 import { cn } from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
@@ -110,30 +117,48 @@ export default function VehicleDetailPage() {
               
               {/* Image Gallery */}
               <div className="rounded-2xl overflow-hidden border bg-background shadow-sm">
-                <div className="aspect-video relative group">
-                  <img
-                    src={vehicle.images[0]}
-                    alt={vehicle.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <Badge className="bg-background/90 text-foreground hover:bg-background/100 backdrop-blur shadow-sm border-0">
-                      {vehicle.type === 'bus' ? 'Bus' : 'Tempo Traveller'}
-                    </Badge>
+                <Carousel className="w-full">
+                  <CarouselContent>
+                    {vehicle.images.map((image, index) => (
+                      <CarouselItem key={index}>
+                        <div className="aspect-video relative group">
+                          <img
+                            src={image}
+                            alt={`${vehicle.name} - View ${index + 1}`}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute top-4 left-4 flex gap-2 z-10">
+                            <Badge className="bg-background/90 text-foreground hover:bg-background/100 backdrop-blur shadow-sm border-0">
+                              {vehicle.type === 'bus' ? 'Bus' : 'Tempo Traveller'}
+                            </Badge>
+                          </div>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  {vehicle.images.length > 1 && (
+                    <>
+                      <CarouselPrevious className="left-4" />
+                      <CarouselNext className="right-4" />
+                    </>
+                  )}
+                  
+                  {/* Share Button (Overlay) */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <Button 
+                      variant="outline" 
+                      size="icon" 
+                      className="rounded-full bg-background/90 hover:bg-background backdrop-blur border-0 shadow-sm" 
+                      onClick={() => {
+                        const text = `Check out this ${vehicle.name} on RentAnyBus: ${window.location.href}`;
+                        window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+                      }}
+                      title="Share on WhatsApp"
+                    >
+                      <Share2 className="w-5 h-5" />
+                    </Button>
                   </div>
-                  <Button 
-                    variant="outline" 
-                    size="icon" 
-                    className="shrink-0 rounded-full" 
-                    onClick={() => {
-                      const text = `Check out this ${vehicle.name} on RentAnyBus: ${window.location.href}`;
-                      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-                    }}
-                    title="Share on WhatsApp"
-                  >
-                    <Share2 className="w-5 h-5" />
-                  </Button>
-                </div>
+                </Carousel>
               </div>
 
               {/* Title & Description */}

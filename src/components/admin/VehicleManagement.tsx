@@ -324,9 +324,9 @@ function VehicleDialog({ open, onOpenChange, vehicle, onSuccess }: {
                 ...formData,
                 seating_capacity: parseInt(formData.seating_capacity) || 0,
                 amenities: formData.amenities.split(',').map(s => s.trim()).filter(Boolean),
-                images: formData.images.split(',').map(s => s.trim()).filter(Boolean),
+                images: formData.images.split(/[\n,]+/).map(s => s.trim()).filter(Boolean),
                 operator_id: (formData.operator_id === 'none' || !formData.operator_id) ? null : formData.operator_id,
-                agent_contact_number: formData.agent_contact_number || null
+                // agent_contact_number: formData.agent_contact_number || null // Temporarily disabled: Column missing in DB
             };
 
             if (vehicle?.id) {
@@ -493,8 +493,10 @@ function VehicleDialog({ open, onOpenChange, vehicle, onSuccess }: {
                             id="images" 
                             value={formData.images} 
                             onChange={e => setFormData({...formData, images: e.target.value})} 
-                            placeholder="/images/bus-1.jpg"
+                            placeholder="Paste image URLs here (separated by comma or new line)...&#10;https://example.com/image1.jpg,&#10;https://example.com/image2.jpg"
+                            className="min-h-[100px]"
                         />
+                        <p className="text-xs text-muted-foreground">Add multiple images to enable the gallery view.</p>
                     </div>
 
                     <div className="space-y-2">
