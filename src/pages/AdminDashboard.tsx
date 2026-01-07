@@ -6,6 +6,8 @@ import { DashboardOverview } from '@/components/admin/DashboardOverview';
 import { RentalLeads } from '@/components/admin/RentalLeads';
 import { BusOwnerLeads } from '@/components/admin/BusOwnerLeads';
 import { VehicleManagement } from '@/components/admin/VehicleManagement';
+import BlogManagement from '@/components/admin/blog/BlogManagement';
+import AdminSettings from '@/components/admin/settings/AdminSettings';
 import { RefreshCw } from 'lucide-react';
 
 export default function AdminDashboard() {
@@ -35,6 +37,8 @@ export default function AdminDashboard() {
       {activeSection === 'rental-leads' && <RentalLeads />}
       {activeSection === 'bus-owner-leads' && <BusOwnerLeads />}
       {activeSection === 'vehicles' && <VehicleManagement />}
+      {activeSection === 'blog' && <BlogManagement />}
+      {activeSection === 'settings' && <AdminSettings />}
     </AdminLayout>
   );
 }

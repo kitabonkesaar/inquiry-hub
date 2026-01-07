@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
-import { Bus, LayoutDashboard, ClipboardList, LogOut, Settings, Truck, Users } from 'lucide-react';
+import { Bus, LayoutDashboard, ClipboardList, LogOut, Settings, Truck, Users, FileText } from 'lucide-react';
 
-export type AdminSection = 'dashboard' | 'vehicles' | 'bus-owner-leads' | 'rental-leads';
+export type AdminSection = 'dashboard' | 'vehicles' | 'bus-owner-leads' | 'rental-leads' | 'blog' | 'settings';
 
 interface AdminLayoutProps {
   children: ReactNode;
@@ -28,6 +28,8 @@ export function AdminLayout({ children, activeSection, onSectionChange }: AdminL
       case 'vehicles': return 'Vehicle Management';
       case 'bus-owner-leads': return 'Bus Owner Leads';
       case 'rental-leads': return 'Bus Rental Inquiries';
+      case 'blog': return 'Blog Management';
+      case 'settings': return 'Site Settings';
       default: return 'Admin Panel';
     }
   };
@@ -71,9 +73,20 @@ export function AdminLayout({ children, activeSection, onSectionChange }: AdminL
             active={activeSection === 'vehicles'}
             onClick={() => onSectionChange('vehicles')}
           />
+          <SidebarItem
+            icon={FileText}
+            label="Blog Management"
+            active={activeSection === 'blog'}
+            onClick={() => onSectionChange('blog')}
+          />
           
           <div className="pt-4 mt-4 border-t border-border">
-            <SidebarItem icon={Settings} label="Settings" />
+            <SidebarItem 
+                icon={Settings} 
+                label="Settings" 
+                active={activeSection === 'settings'}
+                onClick={() => onSectionChange('settings')}
+            />
           </div>
         </nav>
 

@@ -8,6 +8,7 @@ import { CTASection } from '@/components/home/CTASection';
 import { LeadFormSection } from '@/components/home/LeadFormSection';
 
 import { ListYourBusSection } from '@/components/home/ListYourBusSection';
+import BlogSection from '@/components/home/BlogSection';
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <FeaturedFleetSection />
       <HowItWorksSection />
       <TestimonialsSection />
+      <BlogSection />
       <ListYourBusSection />
       <CTASection />
     </Layout>
