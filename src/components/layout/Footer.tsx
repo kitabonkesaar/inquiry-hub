@@ -4,6 +4,7 @@ import { Bus, Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lucide-r
 const footerLinks = {
   company: [
     { name: 'About Us', href: '/about' },
+    { name: 'Blog', href: '/blog' },
     { name: 'List Your Bus', href: '/#list-your-bus' },
     { name: 'Our Buses', href: '/vehicles' },
     { name: 'FAQs', href: '/faqs' },
