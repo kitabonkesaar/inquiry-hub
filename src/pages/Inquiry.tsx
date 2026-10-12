@@ -112,14 +112,14 @@ export default function InquiryPage() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="hero-gradient py-16">
+      <section className="bg-primary text-primary-foreground py-12 md:py-16 border-b border-white/10">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-2xl">
-            <h1 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-              Get a Free Quote
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-3 tracking-tight">
+              Get a Free Instant Charter Quote
             </h1>
-            <p className="text-lg text-primary-foreground/80">
-              Fill out the form below and our team will contact you within 30 minutes with the best price.
+            <p className="text-base md:text-lg text-white/85">
+              Fill out your trip requirements below. Our Odisha fleet dispatchers will call you within 30 minutes with the best verified options and fixed pricing.
             </p>
           </div>
         </div>

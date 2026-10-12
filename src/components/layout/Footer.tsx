@@ -4,62 +4,69 @@ import { Bus, Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lucide-r
 const footerLinks = {
   company: [
     { name: 'About Us', href: '/about' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'List Your Bus', href: '/#list-your-bus' },
-    { name: 'Our Buses', href: '/vehicles' },
+    { name: 'Our Fleet', href: '/vehicles' },
+    { name: 'Tirth Yatra & Tours', href: '/inquiry?trip=pilgrimage' },
+    { name: 'Travel Guides & Blog', href: '/blog' },
     { name: 'FAQs', href: '/faqs' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Contact Us', href: '/contact' },
   ],
   vehicles: [
-    { name: 'AC Buses', href: '/vehicles?type=bus&category=ac' },
-    { name: 'Non-AC Buses', href: '/vehicles?type=bus&category=non-ac' },
-    { name: 'Tempo Travellers', href: '/vehicles?type=traveller' },
-    { name: 'All Vehicles', href: '/vehicles' },
+    { name: 'Luxury AC Sleeper Coaches', href: '/vehicles?type=bus&category=ac' },
+    { name: 'Deluxe Non-AC Buses', href: '/vehicles?type=bus&category=non-ac' },
+    { name: 'Tempo Travellers (12–26 Seater)', href: '/vehicles?type=traveller' },
+    { name: 'Wedding & Marriage Fleet', href: '/inquiry?trip=wedding' },
+    { name: 'School & College Picnics', href: '/inquiry?trip=picnic' },
+  ],
+  portals: [
+    { name: 'List Your Bus (Owner Portal)', href: '/owner' },
+    { name: 'Operator Verification', href: '/owner' },
+    { name: 'My Bookings & Profile', href: '/profile' },
+    { name: 'Admin Console', href: '/admin' },
   ],
 };
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="bg-primary text-primary-foreground border-t border-white/10">
       <div className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand Column */}
-          <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center">
-                <Bus className="w-6 h-6 text-accent-foreground" />
+          <div className="lg:col-span-2 space-y-5">
+            <Link to="/" className="flex items-center gap-2.5">
+              <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center shadow-xs">
+                <Bus className="w-5 h-5 text-accent-foreground" />
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-lg leading-tight">RentAnyBus</span>
-                <span className="text-xs text-primary-foreground/70 leading-tight">Odisha's Premier Bus Rental</span>
+                <span className="font-bold text-lg leading-tight tracking-tight text-white">RentAnyBus</span>
+                <span className="text-[11px] text-white/70 leading-tight">Odisha's Premier Bus Rental Marketplace</span>
               </div>
             </Link>
-            <p className="text-primary-foreground/80 mb-6 max-w-sm">
-              Odisha's only specialized provider for Tirth Yatra, Corporate Tours, and School Picnics. Your premier partner for bus and tempo traveller rentals across Bhubaneswar, Cuttack, and Puri.
+            <p className="text-white/80 text-sm leading-relaxed max-w-sm">
+              Odisha's only specialized marketplace connecting customers directly with verified bus operators and tempo travellers for <strong>Tirth Yatra</strong>, <strong>Weddings</strong>, <strong>Corporate Tours</strong>, and <strong>School Picnics</strong>.
             </p>
-            <div className="space-y-3">
-              <a href="tel:+918249529220" className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                <Phone className="w-5 h-5" />
-                +91 82495 29220
+            <div className="space-y-2.5 text-xs">
+              <a href="tel:+918249529220" className="flex items-center gap-2.5 text-white/85 hover:text-white transition-colors">
+                <Phone className="w-4 h-4 text-accent shrink-0" />
+                <span className="font-medium">+91 82495 29220 (24/7 Helpline)</span>
               </a>
-              <a href="mailto:info@rentanybus.com" className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                <Mail className="w-5 h-5" />
-                info@rentanybus.com
+              <a href="mailto:info@rentanybus.com" className="flex items-center gap-2.5 text-white/85 hover:text-white transition-colors">
+                <Mail className="w-4 h-4 text-accent shrink-0" />
+                <span>info@rentanybus.com</span>
               </a>
-              <div className="flex items-start gap-3 text-primary-foreground/80">
-                <MapPin className="w-5 h-5 mt-0.5" />
-                <span>FM Golei ,Balasore ,<br />Balasore  - 756001</span>
+              <div className="flex items-start gap-2.5 text-white/85">
+                <MapPin className="w-4 h-4 text-accent mt-0.5 shrink-0" />
+                <span>FM Golei, Balasore & Nayapalli, Bhubaneswar, Odisha — 756001</span>
               </div>
             </div>
           </div>
 
-          {/* Links Columns */}
+          {/* Company Links */}
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
-            <ul className="space-y-3">
+            <h4 className="font-semibold text-xs uppercase tracking-wider text-accent mb-4">Company</h4>
+            <ul className="space-y-2.5 text-xs">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link to={link.href} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+                  <Link to={link.href} className="text-white/75 hover:text-white transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -67,12 +74,27 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Vehicle Fleet */}
           <div>
-            <h4 className="font-semibold mb-4">Vehicles</h4>
-            <ul className="space-y-3">
+            <h4 className="font-semibold text-xs uppercase tracking-wider text-accent mb-4">Fleet</h4>
+            <ul className="space-y-2.5 text-xs">
               {footerLinks.vehicles.map((link) => (
                 <li key={link.name}>
-                  <Link to={link.href} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+                  <Link to={link.href} className="text-white/75 hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Portals */}
+          <div>
+            <h4 className="font-semibold text-xs uppercase tracking-wider text-accent mb-4">Portals</h4>
+            <ul className="space-y-2.5 text-xs">
+              {footerLinks.portals.map((link) => (
+                <li key={link.name}>
+                  <Link to={link.href} className="text-white/75 hover:text-white transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -82,19 +104,22 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-primary-foreground/20 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-primary-foreground/60 text-sm">
-            © {new Date().getFullYear()} RentAnyBus. All rights reserved.
-          </p>
-          <div className="flex items-center gap-4">
-            <a href="#" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors">
-              <Facebook className="w-5 h-5" />
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/60">
+          <p>© {new Date().getFullYear()} RentAnyBus. All rights reserved. Registered Transport Partner in Odisha.</p>
+          <div className="flex items-center gap-3">
+            <span className="text-accent font-medium">100% Commercial Permits</span>
+            <span>•</span>
+            <span>All-Odisha 24/7 Roadside Assistance</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 text-white transition-colors">
+              <Facebook className="w-4 h-4" />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors">
-              <Instagram className="w-5 h-5" />
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 text-white transition-colors">
+              <Instagram className="w-4 h-4" />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors">
-              <Twitter className="w-5 h-5" />
+            <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 text-white transition-colors">
+              <Twitter className="w-4 h-4" />
             </a>
           </div>
         </div>

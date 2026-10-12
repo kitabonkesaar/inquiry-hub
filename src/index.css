@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,65 +6,66 @@
 
 @layer base {
   :root {
-    /* Primary - Deep Navy Blue */
-    --primary: 222 47% 20%;
-    --primary-foreground: 40 100% 97%;
+    /* Primary - Deep Navy Blue #102A43 */
+    --primary: 209 61% 16%;
+    --primary-foreground: 0 0% 100%;
     
-    /* Secondary - Soft Blue Gray */
-    --secondary: 215 25% 94%;
-    --secondary-foreground: 222 47% 15%;
+    /* Secondary - Blue #1769AA */
+    --secondary: 207 76% 38%;
+    --secondary-foreground: 0 0% 100%;
     
-    /* Accent - Warm Amber */
-    --accent: 38 92% 50%;
-    --accent-foreground: 222 47% 11%;
+    /* Accent - Warm Yellow #FFC83D */
+    --accent: 43 100% 62%;
+    --accent-foreground: 209 61% 16%;
     
-    /* Background */
-    --background: 220 20% 98%;
-    --foreground: 222 47% 11%;
+    /* Main Background #F7F9FC */
+    --background: 216 33% 98%;
+    /* Main Text #172B4D */
+    --foreground: 218 54% 20%;
     
-    /* Card */
+    /* Surface #FFFFFF */
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 218 54% 20%;
     
-    /* Popover */
+    /* Popover #FFFFFF */
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 218 54% 20%;
     
-    /* Muted */
-    --muted: 215 20% 92%;
-    --muted-foreground: 215 16% 47%;
+    /* Muted & Secondary Text #62748A */
+    --muted: 210 30% 95%;
+    --muted-foreground: 213 17% 46%;
     
-    /* Border */
-    --border: 215 25% 88%;
-    --input: 215 25% 88%;
-    --ring: 38 92% 50%;
+    /* Borders & Input #E2E8F0 */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 207 76% 38%;
     
-    /* Destructive */
-    --destructive: 0 84% 60%;
+    /* Error #D64545 */
+    --destructive: 0 65% 55%;
     --destructive-foreground: 0 0% 100%;
     
-    /* Status Colors */
-    --success: 142 71% 45%;
+    /* Status Colors: Success #16845B, Warning #B7791F */
+    --success: 158 71% 30%;
     --success-foreground: 0 0% 100%;
-    --warning: 38 92% 50%;
-    --warning-foreground: 222 47% 11%;
+    --warning: 36 71% 42%;
+    --warning-foreground: 0 0% 100%;
     
-    /* Custom */
-    --hero-gradient: linear-gradient(135deg, hsl(222 47% 15%) 0%, hsl(222 47% 25%) 50%, hsl(215 40% 30%) 100%);
-    --card-shadow: 0 4px 20px -4px hsl(222 47% 20% / 0.1);
-    --card-hover-shadow: 0 12px 40px -8px hsl(222 47% 20% / 0.15);
-    --glow-accent: 0 0 40px hsl(38 92% 50% / 0.3);
+    /* Travel-Tech Tokens */
+    --hero-gradient: linear-gradient(135deg, #102A43 0%, #153A5B 50%, #1769AA 100%);
+    --card-shadow: 0 1px 3px rgba(16, 42, 67, 0.05), 0 4px 12px rgba(16, 42, 67, 0.06);
+    --card-hover-shadow: 0 8px 24px rgba(16, 42, 67, 0.12);
+    --glow-accent: 0 0 25px rgba(255, 200, 61, 0.35);
     
     --radius: 0.75rem;
     
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 218 54% 20%;
+    --sidebar-primary: 209 61% 16%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 30% 95%;
+    --sidebar-accent-foreground: 209 61% 16%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 207 76% 38%;
   }
 
   .dark {
@@ -181,11 +182,12 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
   }
 }
 

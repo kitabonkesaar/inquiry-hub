@@ -142,14 +142,18 @@ export default function VehiclesPage() {
   return (
     <Layout>
       {/* Page Header */}
-      <section className="hero-gradient py-12 md:py-20">
+      <section className="bg-primary text-primary-foreground py-10 md:py-14 border-b border-white/10">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
-              Premium Bus & Tempo Traveller Fleet
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-medium text-white mb-3">
+              <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              <span>Odisha Verified Fleet</span>
+            </div>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 tracking-tight">
+              Verified Bus & Tempo Traveller Fleet
             </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/80">
-              Browse our verified fleet available for rent across Odisha.
+            <p className="text-sm sm:text-base text-white/80">
+              Transparent per-day pricing, commercial permits, and instant booking across all 30 Odisha districts.
             </p>
           </div>
         </div>

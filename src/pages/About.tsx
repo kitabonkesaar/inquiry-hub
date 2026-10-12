@@ -5,14 +5,14 @@ export default function About() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="hero-gradient py-20">
+      <section className="bg-primary text-primary-foreground py-12 md:py-16 border-b border-white/10">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
               About RentAnyBus
             </h1>
-            <p className="text-xl text-primary-foreground/80 leading-relaxed">
-              We are Odisha's leading bus and tempo traveller rental service, dedicated to making group travel seamless, comfortable, and affordable across the state.
+            <p className="text-base md:text-lg text-white/85 leading-relaxed">
+              We are Odisha's premier bus and tempo traveller rental marketplace, dedicated to making group travel seamless, transparent, and dependable across the state.
             </p>
           </div>
         </div>

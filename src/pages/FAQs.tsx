@@ -113,14 +113,14 @@ export default function FAQsPage() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="hero-gradient py-20">
+      <section className="bg-primary text-primary-foreground py-12 md:py-16 border-b border-white/10">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-3 tracking-tight">
               Frequently Asked Questions
             </h1>
-            <p className="text-lg text-primary-foreground/80">
-              Find answers to common questions about our services, booking process, and policies.
+            <p className="text-base md:text-lg text-white/85">
+              Clear, transparent answers about bus charter pricing, driver allowances, cancellations, and Odisha route permits.
             </p>
           </div>
         </div>

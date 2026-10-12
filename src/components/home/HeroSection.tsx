@@ -28,73 +28,70 @@ export function HeroSection() {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-4xl">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground/90 text-xs sm:text-sm font-medium mb-6 sm:mb-8 animate-fade-in">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm font-medium mb-6 animate-fade-in shadow-xs">
             <Award className="w-4 h-4 text-accent" />
-            Odisha's Only Premier Bus Rental Provider
+            <span>Odisha's Premier Bus Rental Marketplace</span>
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight mb-4 sm:mb-6 animate-slide-up">
-            The Only Choice for
-            <br className="hidden md:block" />
-            <span className="text-gradient">Group Travel in Odisha</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 animate-slide-up tracking-tight">
+            The Trusted Choice for
+            <br />
+            <span className="text-accent">Group Travel Across Odisha</span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-base md:text-lg lg:text-xl text-primary-foreground/80 max-w-2xl mb-8 sm:mb-10 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            We are the only provider offering dedicated fleet services for <strong>Tirth Yatra</strong>, <strong>Corporate Tours</strong>, and <strong>School/College Picnics</strong>.
-            <span className="block mt-2">
-              Experience the difference with Odisha's most trusted transport partner.
-            </span>
+          <p className="text-sm sm:text-base md:text-lg text-white/85 max-w-2xl mb-8 animate-slide-up leading-relaxed" style={{ animationDelay: '0.1s' }}>
+            Direct rental booking for <strong>Tirth Yatra & Pilgrimages</strong>, <strong>Corporate Tours</strong>, <strong>Weddings</strong>, and <strong>School Picnics</strong>. Clean verified buses, fixed upfront pricing, and experienced drivers.
           </p>
 
           {/* Instant Marketplace Search Bar */}
-          <div className="mb-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <div className="mb-8 animate-slide-up" style={{ animationDelay: '0.15s' }}>
             <MarketplaceSearchBar />
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-slide-up" style={{ animationDelay: '0.25s' }}>
+          <div className="flex flex-col sm:flex-row gap-3.5 mb-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <Link to="/vehicles">
-              <Button variant="hero" size="xl" className="w-full sm:w-auto">
-                Explore Our Fleet
-                <ArrowRight className="w-5 h-5" />
+              <Button variant="accent" size="lg" className="w-full sm:w-auto font-bold shadow-md">
+                Explore Verified Fleet
+                <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </Link>
             <Link to="/inquiry">
-              <Button variant="hero-outline" size="xl" className="w-full sm:w-auto">
-                Get Free Quote
+              <Button variant="hero-outline" size="lg" className="w-full sm:w-auto font-medium">
+                Get Custom Itinerary Quote
               </Button>
             </Link>
           </div>
 
           {/* Trust Indicators */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 animate-slide-up" style={{ animationDelay: '0.3s' }}>
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 backdrop-blur-sm hover:bg-primary-foreground/10 transition-colors duration-300">
-              <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
-                <Shield className="w-6 h-6 text-accent" />
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 animate-slide-up" style={{ animationDelay: '0.25s' }}>
+            <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/10 border border-white/15">
+              <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center shrink-0">
+                <Shield className="w-5 h-5 text-accent" />
               </div>
               <div>
-                <p className="font-semibold text-primary-foreground">Verified Vehicles</p>
-                <p className="text-sm text-primary-foreground/60">100% Safety Certified</p>
+                <p className="font-semibold text-sm text-white">100% Verified Fleet</p>
+                <p className="text-xs text-white/70">Commercial Permits & Insurance</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 backdrop-blur-sm hover:bg-primary-foreground/10 transition-colors duration-300">
-              <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
-                <Clock className="w-6 h-6 text-accent" />
+            <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/10 border border-white/15">
+              <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center shrink-0">
+                <Clock className="w-5 h-5 text-accent" />
               </div>
               <div>
-                <p className="font-semibold text-primary-foreground">Quick Response</p>
-                <p className="text-sm text-primary-foreground/60">Within 30 minutes</p>
+                <p className="font-semibold text-sm text-white">30-Minute Callback</p>
+                <p className="text-xs text-white/70">Instant quote & route assistance</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 backdrop-blur-sm hover:bg-primary-foreground/10 transition-colors duration-300">
-              <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
-                <Award className="w-6 h-6 text-accent" />
+            <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/10 border border-white/15">
+              <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center shrink-0">
+                <Award className="w-5 h-5 text-accent" />
               </div>
               <div>
-                <p className="font-semibold text-primary-foreground">10+ Years</p>
-                <p className="text-sm text-primary-foreground/60">Industry Experience</p>
+                <p className="font-semibold text-sm text-white">Odisha Wide Network</p>
+                <p className="text-xs text-white/70">Covering all 30 districts</p>
               </div>
             </div>
           </div>

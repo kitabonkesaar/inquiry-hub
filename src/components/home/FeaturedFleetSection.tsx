@@ -12,71 +12,79 @@ export function FeaturedFleetSection() {
       id: 1,
       image: bus1,
       title: 'Luxury AC Sleeper',
-      capacity: '45 Seater',
+      capacity: '45 Seater • 2x1 Layout',
+      price: 'From ₹18,000/day',
     },
     {
       id: 2,
       image: traveller1,
-      title: 'Premium Traveller',
-      capacity: '17 Seater',
+      title: 'Premium Tempo Traveller',
+      capacity: '17 Seater • AC',
+      price: 'From ₹6,500/day',
     },
     {
       id: 3,
       image: bus2,
-      title: 'Executive Coach',
-      capacity: '50 Seater',
+      title: 'Executive Pushback Coach',
+      capacity: '50 Seater • 2x2 Layout',
+      price: 'From ₹15,000/day',
     },
-     {
+    {
       id: 4,
       image: heroBus,
-      title: 'Volvo Multi-Axle',
-      capacity: '53 Seater',
+      title: 'Volvo 9600 Multi-Axle',
+      capacity: '53 Seater • Ultra Luxury',
+      price: 'From ₹25,000/day',
     },
   ];
 
   return (
-    <section className="py-24 bg-background">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-end justify-between mb-12">
-            <div className="max-w-2xl">
-                <span className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-                    Visual Tour
-                </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                    Experience Our Premium Fleet
-                </h2>
-            </div>
-            <Link to="/vehicles" className="hidden md:block">
-                <Button variant="outline" className="gap-2">
-                    View All Photos <ArrowRight className="w-4 h-4" />
-                </Button>
-            </Link>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+          <div className="max-w-2xl">
+            <span className="inline-block px-3.5 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-semibold uppercase tracking-wider mb-3">
+              Fleet Showcase
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground tracking-tight">
+              Experience Our Premium Verified Fleet
+            </h2>
+          </div>
+          <Link to="/vehicles">
+            <Button variant="outline" className="gap-2 font-semibold">
+              View All Buses & Travellers <ArrowRight className="w-4 h-4" />
+            </Button>
+          </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {fleet.map((item, index) => (
-                <div 
-                    key={item.id} 
-                    className="group relative rounded-2xl overflow-hidden aspect-[4/5] cursor-pointer shadow-lg hover:shadow-xl transition-all animate-in fade-in zoom-in-95 duration-700 fill-mode-forwards"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                    <img 
-                        src={item.image} 
-                        alt={item.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 transition-opacity" />
-                    
-                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                        <p className="text-accent text-sm font-medium mb-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-y-2 group-hover:translate-y-0">
-                            {item.capacity}
-                        </p>
-                        <h3 className="text-white text-xl font-bold leading-tight">
-                            {item.title}
-                        </h3>
-                    </div>
-                </div>
-            ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {fleet.map((item) => (
+            <Link
+              key={item.id}
+              to="/vehicles"
+              className="group relative rounded-2xl overflow-hidden aspect-[4/5] bg-muted shadow-xs hover:shadow-md transition-all duration-300 block"
+            >
+              <img 
+                src={item.image} 
+                alt={item.title}
+                loading="lazy"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/30 to-transparent opacity-90" />
+              
+              <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                <span className="inline-block px-2 py-0.5 rounded bg-accent text-accent-foreground text-xs font-bold mb-2">
+                  {item.price}
+                </span>
+                <p className="text-white/80 text-xs font-medium mb-1">
+                  {item.capacity}
+                </p>
+                <h3 className="text-white text-lg font-bold leading-tight group-hover:text-accent transition-colors">
+                  {item.title}
+                </h3>
+              </div>
+            </Link>
+          ))}
         </div>
         
         <div className="mt-8 text-center md:hidden">

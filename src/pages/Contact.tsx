@@ -26,14 +26,14 @@ export default function ContactPage() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="hero-gradient py-20">
+      <section className="bg-primary text-primary-foreground py-12 md:py-16 border-b border-white/10">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
-              Contact Us
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-3 tracking-tight">
+              Contact & 24/7 Helpline
             </h1>
-            <p className="text-lg text-primary-foreground/80">
-              Have questions? We're here to help. Reach out to us through any of the channels below.
+            <p className="text-base md:text-lg text-white/85">
+              Have questions or need an immediate charter bus in Odisha? Reach our team directly via phone, WhatsApp, or form.
             </p>
           </div>
         </div>

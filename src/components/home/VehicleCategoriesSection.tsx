@@ -35,49 +35,50 @@ export function VehicleCategoriesSection() {
         </div>
 
         {/* Category Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {vehicleCategories.map((category, index) => {
             const Icon = iconMap[category.icon as keyof typeof iconMap] || Bus;
+            const targetUrl = 
+              category.id === 'ac-bus' ? '/vehicles?type=bus&category=ac' :
+              category.id === 'non-ac-bus' ? '/vehicles?type=bus&category=non-ac' :
+              '/vehicles?type=traveller';
+
             return (
               <Link
                 key={category.id}
-                to={`/vehicles?category=${category.id}`}
-                className="group relative p-8 rounded-3xl bg-card border border-border/50 shadow-sm hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-forwards"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                to={targetUrl}
+                className="group relative p-6 rounded-2xl bg-card border border-border shadow-xs hover:shadow-md hover:border-secondary/50 transition-all duration-300 flex flex-col h-full"
               >
-                {/* Hover Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="relative z-10 flex flex-col h-full">
+                <div className="flex flex-col h-full">
                   {/* Icon & Arrow Row */}
-                  <div className="flex justify-between items-start mb-6">
-                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-500 shadow-sm">
-                      <Icon className="w-8 h-8 text-primary group-hover:text-primary-foreground transition-colors duration-500" />
+                  <div className="flex justify-between items-start mb-5">
+                    <div className="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                      <Icon className="w-7 h-7 text-secondary group-hover:text-accent transition-colors duration-300" />
                     </div>
                     
-                    <div className="w-10 h-10 rounded-full bg-muted/50 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 group-hover:rotate-45">
-                      <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-current transition-colors" />
+                    <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+                      <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-current transition-colors" />
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="space-y-3 mb-8 flex-grow">
-                    <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                  <div className="space-y-2 mb-6 flex-grow">
+                    <h3 className="text-xl font-bold text-foreground group-hover:text-secondary transition-colors">
                       {category.name}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground text-sm leading-relaxed">
                       {category.description}
                     </p>
                   </div>
 
                   {/* Bottom Stats */}
-                  <div className="pt-6 border-t border-border/50 flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
-                      <div className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                      {category.count} Vehicles Available
+                  <div className="pt-4 border-t border-border flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
+                      <div className="h-2 w-2 rounded-full bg-emerald-500" />
+                      <span>{category.count} Verified Vehicles</span>
                     </div>
-                    <span className="text-sm font-semibold text-primary opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                      Book Now
+                    <span className="text-xs font-semibold text-secondary group-hover:text-accent flex items-center gap-1 transition-colors">
+                      Explore Fleet →
                     </span>
                   </div>
                 </div>

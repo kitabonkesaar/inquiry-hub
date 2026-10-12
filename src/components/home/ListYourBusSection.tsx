@@ -177,9 +177,15 @@ export function ListYourBusSection() {
                 />
               </div>
 
-              <Button type="submit" className="w-full" size="lg" disabled={loading}>
-                {loading ? 'Submitting...' : 'Submit Request'}
+              <Button type="submit" variant="accent" className="w-full font-bold shadow-xs" size="lg" disabled={loading}>
+                {loading ? 'Submitting...' : 'Register as Verified Operator'}
               </Button>
+
+              <div className="text-center pt-2">
+                <a href="/owner" className="text-xs text-secondary font-semibold hover:underline">
+                  Already registered? Go to Bus Owner Dashboard →
+                </a>
+              </div>
             </form>
           </div>
         </div>

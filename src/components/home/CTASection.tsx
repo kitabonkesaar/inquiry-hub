@@ -4,22 +4,15 @@ import { Button } from '@/components/ui/button';
 
 export function CTASection() {
   return (
-    <section className="py-24 hero-gradient relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-accent blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-primary-foreground blur-3xl" />
-      </div>
-
+    <section className="py-20 bg-primary text-primary-foreground border-t border-white/10 relative overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-6">
-            Ready to plan your next{' '}
-            <span className="text-gradient">group journey?</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-5 tracking-tight">
+            Ready to Plan Your Next{' '}
+            <span className="text-accent">Group Journey in Odisha?</span>
           </h2>
-          <p className="text-lg md:text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
-            Get a free, no‑obligation quote within 30 minutes. Share your route once and we&apos;ll take care of vehicles,
-            timing and coordination for the entire trip.
+          <p className="text-base md:text-lg text-white/85 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Get an all-inclusive, verified charter quote within 30 minutes. Fixed pricing, no hidden charges, and dedicated 24/7 on-trip coordinator.
           </p>
 
           {/* CTA Buttons */}

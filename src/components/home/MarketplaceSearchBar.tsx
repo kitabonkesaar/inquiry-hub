@@ -61,9 +61,9 @@ export function MarketplaceSearchBar() {
   };
 
   return (
-    <div className="w-full bg-card/95 backdrop-blur-xl border border-border/80 shadow-2xl rounded-3xl p-5 sm:p-7 relative z-20">
+    <div className="w-full bg-card border border-border shadow-lg rounded-2xl p-5 sm:p-6 relative z-20">
       {/* Header Info */}
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 border-b border-border/60 pb-3">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 border-b border-border/80 pb-3">
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
           <span className="font-bold text-foreground text-sm">Quick Bus Rental Quote</span>
@@ -71,15 +71,15 @@ export function MarketplaceSearchBar() {
         </div>
         <a
           href="tel:+918249529220"
-          className="flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-semibold hover:underline"
+          className="flex items-center gap-1.5 text-xs text-secondary font-semibold hover:underline"
         >
-          <PhoneCall className="w-3.5 h-3.5" />
+          <PhoneCall className="w-3.5 h-3.5 text-accent" />
           <span>Call: +91 82495 29220</span>
         </a>
       </div>
 
       {submitted ? (
-        <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-600 flex items-center justify-center shrink-0">
               <CheckCircle2 className="w-6 h-6" />
@@ -96,14 +96,15 @@ export function MarketplaceSearchBar() {
               size="sm"
               variant="outline"
               onClick={() => setSubmitted(false)}
-              className="text-xs rounded-xl"
+              className="text-xs rounded-lg"
             >
               Submit Another
             </Button>
             <Button
               size="sm"
+              variant="accent"
               onClick={() => navigate('/vehicles')}
-              className="text-xs rounded-xl font-semibold"
+              className="text-xs rounded-lg font-semibold"
             >
               Browse Fleet
             </Button>
@@ -112,24 +113,24 @@ export function MarketplaceSearchBar() {
       ) : (
         <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
           {/* 1. Name */}
-          <div className="space-y-1">
-            <Label htmlFor="contact_name" className="text-xs text-muted-foreground flex items-center gap-1 font-medium">
-              <User className="w-3.5 h-3.5 text-primary" /> Your Name
+          <div className="space-y-1.5">
+            <Label htmlFor="contact_name" className="text-xs text-foreground/80 flex items-center gap-1.5 font-medium">
+              <User className="w-3.5 h-3.5 text-secondary" /> Your Name
             </Label>
             <Input
               id="contact_name"
               placeholder="e.g. Ramesh Mohapatra"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="h-11 rounded-xl text-xs bg-background"
+              className="h-10 rounded-lg text-xs bg-background border-border"
               required
             />
           </div>
 
           {/* 2. Contact Number */}
-          <div className="space-y-1">
-            <Label htmlFor="contact_phone" className="text-xs text-muted-foreground flex items-center gap-1 font-medium">
-              <Phone className="w-3.5 h-3.5 text-primary" /> Contact Number
+          <div className="space-y-1.5">
+            <Label htmlFor="contact_phone" className="text-xs text-foreground/80 flex items-center gap-1.5 font-medium">
+              <Phone className="w-3.5 h-3.5 text-secondary" /> Contact Number
             </Label>
             <Input
               id="contact_phone"
@@ -137,25 +138,25 @@ export function MarketplaceSearchBar() {
               placeholder="e.g. 98765 43210"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="h-11 rounded-xl text-xs bg-background"
+              className="h-10 rounded-lg text-xs bg-background border-border"
               required
             />
           </div>
 
           {/* 3. For How Many Days */}
-          <div className="space-y-1">
-            <Label htmlFor="contact_days" className="text-xs text-muted-foreground flex items-center gap-1 font-medium">
-              <Clock className="w-3.5 h-3.5 text-primary" /> For How Many Days?
+          <div className="space-y-1.5">
+            <Label htmlFor="contact_days" className="text-xs text-foreground/80 flex items-center gap-1.5 font-medium">
+              <Clock className="w-3.5 h-3.5 text-secondary" /> Duration (Days)
             </Label>
             <Input
               id="contact_days"
               type="number"
               min={1}
               max={60}
-              placeholder="e.g. 3 Days"
+              placeholder="e.g. 3"
               value={days}
               onChange={(e) => setDays(e.target.value)}
-              className="h-11 rounded-xl text-xs bg-background"
+              className="h-10 rounded-lg text-xs bg-background border-border"
               required
             />
           </div>
@@ -165,7 +166,8 @@ export function MarketplaceSearchBar() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full h-11 rounded-xl text-sm font-bold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-2"
+              variant="accent"
+              className="w-full h-10 rounded-lg text-sm font-bold shadow-sm transition-all flex items-center justify-center gap-2"
             >
               <Send className="w-4 h-4" />
               <span>{isSubmitting ? 'Sending...' : 'Get Instant Quote'}</span>
