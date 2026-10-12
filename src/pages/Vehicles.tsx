@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Filter, SlidersHorizontal, RefreshCw, Search, ArrowUpDown } from 'lucide-react';
+import { Filter, SlidersHorizontal, RefreshCw, Search, ArrowUpDown, MapPin } from 'lucide-react';
 import { Layout } from '@/components/layout/Layout';
 import { VehicleCard } from '@/components/vehicles/VehicleCard';
 import { FilterContent } from '@/components/vehicles/FilterContent';
@@ -212,6 +212,21 @@ export default function VehiclesPage() {
               </Drawer>
             </div>
           </div>
+
+          {/* Active Search Summary Banner */}
+          {searchParams.get('pickup') && (
+            <div className="mt-3 p-3 bg-primary/10 border border-primary/20 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-primary">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 shrink-0" />
+                <span>
+                  Charter Search: <strong>{searchParams.get('pickup')}</strong> → <strong>{searchParams.get('drop')}</strong> ({searchParams.get('start')} to {searchParams.get('end')})
+                </span>
+              </div>
+              <span className="font-semibold text-foreground">
+                {filteredVehicles.length} Buses Available for Immediate Charter
+              </span>
+            </div>
+          )}
         </div>
       </div>
 

@@ -18,6 +18,11 @@ import {
 import { VehicleCard } from '@/components/vehicles/VehicleCard';
 import { cn } from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
+import { SeatLayoutVisualizer } from '@/components/vehicles/SeatLayoutVisualizer';
+import { AvailabilityCalendar } from '@/components/vehicles/AvailabilityCalendar';
+import { BookingModal } from '@/components/booking/BookingModal';
+import { marketplaceStore } from '@/services/marketplaceStore';
+import { MarketplaceBus } from '@/types/marketplace';
 
 const availabilityConfig = {
   available: { 
@@ -91,7 +96,43 @@ export default function VehicleDetailPage() {
     .slice(0, 3);
 
   // Default layout if not present
-  const busLayout = (vehicle as any).bus_layout || '2x2';
+  const rawLayout = (vehicle as any).bus_layout || '2x2';
+  const busLayout = rawLayout.includes('Sleeper')
+    ? rawLayout
+    : vehicle.type === 'traveller'
+    ? '2x1 Sleeper'
+    : '2x2 Sleeper';
+
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
+  // Retrieve or formulate marketplace bus
+  const marketplaceBus: MarketplaceBus = marketplaceStore.getBusById(vehicle.id) || {
+    id: vehicle.id,
+    name: vehicle.name,
+    type: vehicle.type as any,
+    category: vehicle.category as any,
+    layout: busLayout as any,
+    seatingCapacity: vehicle.seatingCapacity,
+    pricePerDay: parseInt(String(vehicle.pricePerDay).replace(/[^0-9]/g, '')) || 18000,
+    pricePerKm: 45,
+    minKmPerDay: 250,
+    driverAllowancePerDay: 600,
+    images: vehicle.images,
+    amenities: vehicle.amenities,
+    description: vehicle.description,
+    rating: 4.9,
+    reviewCount: 32,
+    ownerId: 'owner-1',
+    ownerName: 'Kalinga Express Lines',
+    ownerPhone: '+91 94370 12345',
+    registrationNumber: 'OD-02-CB-9090',
+    location: 'Bhubaneswar, Odisha',
+    status: 'approved',
+    blockedDates: ['2026-10-18', '2026-10-19', '2026-10-20'],
+    createdAt: '2026-01-10T10:00:00Z',
+  };
+
+  const reviews = marketplaceStore.getReviews(vehicle.id);
 
   return (
     <Layout>
@@ -260,6 +301,54 @@ export default function VehicleDetailPage() {
                 </div>
               </div>
 
+              {/* Seat & Cabin Layout Visualizer */}
+              <SeatLayoutVisualizer
+                layout={marketplaceBus.layout}
+                seatingCapacity={vehicle.seatingCapacity}
+              />
+
+              {/* Availability Calendar */}
+              <AvailabilityCalendar
+                blockedDates={marketplaceBus.blockedDates}
+              />
+
+              {/* Customer Reviews & Feedback */}
+              <div className="bg-card rounded-2xl border shadow-sm p-6 sm:p-8 space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Star className="w-5 h-5 fill-amber-400 text-amber-400" />
+                    <h3 className="text-xl font-bold">Charter Traveler Reviews</h3>
+                  </div>
+                  <span className="text-xs text-muted-foreground">
+                    {reviews.length} Verified Ratings
+                  </span>
+                </div>
+
+                {reviews.length === 0 ? (
+                  <p className="text-xs text-muted-foreground py-2">
+                    Be the first traveler to charter this coach and leave a review.
+                  </p>
+                ) : (
+                  <div className="space-y-3 pt-1">
+                    {reviews.map((rev) => (
+                      <div key={rev.id} className="p-3.5 rounded-xl bg-muted/20 border space-y-1.5 text-xs">
+                        <div className="flex items-center justify-between">
+                          <span className="font-semibold text-foreground">{rev.customerName}</span>
+                          <div className="flex items-center gap-1 text-amber-500 font-bold">
+                            <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                            <span>{rev.rating}.0</span>
+                          </div>
+                        </div>
+                        <p className="text-muted-foreground leading-relaxed">{rev.comment}</p>
+                        <span className="text-[10px] text-muted-foreground/60 block">
+                          Verified Trip on {new Date(rev.createdAt).toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
             </div>
 
             {/* Right Column - Booking Sidebar */}
@@ -269,13 +358,24 @@ export default function VehicleDetailPage() {
                 <div className="bg-card rounded-2xl border shadow-lg overflow-hidden">
                   <div className="p-6 space-y-6">
                     <div>
-                      <p className="text-sm text-muted-foreground font-medium mb-1">Starting Price</p>
+                      <p className="text-sm text-muted-foreground font-medium mb-1">Charter Rate</p>
                       <div className="flex items-baseline gap-2">
                         <span className="text-3xl font-bold text-primary">{vehicle.pricePerDay}</span>
                         <span className="text-muted-foreground">/ day</span>
                       </div>
                       <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
-                        <Clock className="w-3 h-3" /> Includes driver charges
+                        <Clock className="w-3 h-3" /> Includes driver charges & road permits
+                      </p>
+                    </div>
+
+                    {/* Upfront Token Advance Badge */}
+                    <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl space-y-1 text-xs">
+                      <div className="flex justify-between items-center font-semibold text-amber-800 dark:text-amber-300">
+                        <span>Upfront Advance Payment</span>
+                        <span className="font-bold">₹10,000 Only</span>
+                      </div>
+                      <p className="text-[11px] text-amber-700/80 dark:text-amber-400">
+                        Reserve today for ₹10,000 partial payment. Settle balance on trip agreement.
                       </p>
                     </div>
 
@@ -287,10 +387,17 @@ export default function VehicleDetailPage() {
                       </div>
                     </div>
 
-                    <div className="space-y-3 pt-2">
+                    <div className="space-y-2.5 pt-2">
+                      <Button
+                        onClick={() => setIsBookingModalOpen(true)}
+                        className="w-full h-12 text-sm font-bold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all rounded-xl"
+                      >
+                        Rent This Bus (Pay ₹10,000 Advance)
+                      </Button>
+
                       <Link to={`/inquiry?vehicle=${vehicle.id}`} className="block">
-                        <Button className="w-full h-12 text-base shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all">
-                          Get Instant Quote
+                        <Button variant="outline" className="w-full h-10 text-xs rounded-xl">
+                          Request Custom Route Quote
                         </Button>
                       </Link>
                       
@@ -379,6 +486,13 @@ export default function VehicleDetailPage() {
               </div>
             </div>
           )}
+
+          {/* Booking Modal */}
+          <BookingModal
+            bus={marketplaceBus}
+            isOpen={isBookingModalOpen}
+            onClose={() => setIsBookingModalOpen(false)}
+          />
         </div>
       </div>
     </Layout>

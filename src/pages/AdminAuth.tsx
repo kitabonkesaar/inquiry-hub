@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Bus, Mail, Lock, User, ArrowRight } from 'lucide-react';
+import { Bus, Mail, Lock, User, ArrowRight, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
+import { marketplaceStore } from '@/services/marketplaceStore';
 
 export default function AdminAuth() {
   const [isLogin, setIsLogin] = useState(true);
@@ -157,6 +158,33 @@ export default function AdminAuth() {
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
+            </Button>
+
+            <div className="relative my-4 text-center">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t border-border" />
+              </div>
+              <span className="relative bg-card px-2 text-xs text-muted-foreground uppercase">
+                Or
+              </span>
+            </div>
+
+            <Button
+              type="button"
+              variant="outline"
+              size="lg"
+              className="w-full font-semibold border-primary/20 hover:bg-primary/5 hover:text-primary"
+              onClick={() => {
+                marketplaceStore.setActiveRole('admin');
+                toast({
+                  title: "Admin Mode Enabled",
+                  description: "Redirecting to admin dashboard...",
+                });
+                navigate('/admin');
+              }}
+            >
+              <ShieldCheck className="w-4 h-4 mr-2 text-primary" />
+              Quick Demo Admin Access
             </Button>
           </form>
 

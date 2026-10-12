@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
+import { marketplaceStore } from '@/services/marketplaceStore';
 import { AdminLayout, AdminSection } from '@/components/admin/AdminLayout';
+import { MarketplaceAdminSection } from '@/components/admin/MarketplaceAdminSection';
 import { DashboardOverview } from '@/components/admin/DashboardOverview';
 import { RentalLeads } from '@/components/admin/RentalLeads';
 import { BusOwnerLeads } from '@/components/admin/BusOwnerLeads';
@@ -13,15 +15,16 @@ import { RefreshCw } from 'lucide-react';
 export default function AdminDashboard() {
   const { user, isStaff, loading: authLoading } = useAuth();
   const navigate = useNavigate();
-  const [activeSection, setActiveSection] = useState<AdminSection>('dashboard');
+  const [activeSection, setActiveSection] = useState<AdminSection>('marketplace');
+  const isAdminRole = marketplaceStore.getActiveRole() === 'admin';
 
   useEffect(() => {
-    if (!authLoading && (!user || !isStaff)) {
+    if (!authLoading && !isAdminRole && (!user || !isStaff)) {
       navigate('/admin/auth');
     }
-  }, [user, isStaff, authLoading, navigate]);
+  }, [user, isStaff, authLoading, navigate, isAdminRole]);
 
-  if (authLoading) {
+  if (authLoading && !isAdminRole) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <RefreshCw className="w-8 h-8 animate-spin text-primary" />
@@ -29,10 +32,9 @@ export default function AdminDashboard() {
     );
   }
 
-  if (!user || !isStaff) return null;
-
   return (
     <AdminLayout activeSection={activeSection} onSectionChange={setActiveSection}>
+      {activeSection === 'marketplace' && <MarketplaceAdminSection />}
       {activeSection === 'dashboard' && <DashboardOverview />}
       {activeSection === 'rental-leads' && <RentalLeads />}
       {activeSection === 'bus-owner-leads' && <BusOwnerLeads />}

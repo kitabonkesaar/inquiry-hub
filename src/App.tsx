@@ -16,6 +16,8 @@ import AdminAuth from "./pages/AdminAuth";
 import AdminDashboard from "./pages/AdminDashboard";
 import BlogList from "./pages/BlogList";
 import BlogPost from "./pages/BlogPost";
+import CustomerProfile from "./pages/CustomerProfile";
+import OwnerDashboard from "./pages/OwnerDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +34,10 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/vehicles" element={<Vehicles />} />
             <Route path="/vehicles/:id" element={<VehicleDetail />} />
+            <Route path="/profile" element={<CustomerProfile />} />
+            <Route path="/owner" element={<OwnerDashboard />} />
+            <Route path="/owner/dashboard" element={<OwnerDashboard />} />
+            <Route path="/owner/register" element={<OwnerDashboard />} />
             <Route path="/inquiry" element={<Inquiry />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />

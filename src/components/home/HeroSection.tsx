@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Shield, Clock, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { MarketplaceSearchBar } from './MarketplaceSearchBar';
 import heroBus from '@/assets/hero-bus.jpg';
 
 export function HeroSection() {
@@ -47,8 +48,13 @@ export function HeroSection() {
             </span>
           </p>
 
+          {/* Instant Marketplace Search Bar */}
+          <div className="mb-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            <MarketplaceSearchBar />
+          </div>
+
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-slide-up" style={{ animationDelay: '0.25s' }}>
             <Link to="/vehicles">
               <Button variant="hero" size="xl" className="w-full sm:w-auto">
                 Explore Our Fleet

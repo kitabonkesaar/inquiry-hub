@@ -20,8 +20,8 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
 
   return (
     <div className="group rounded-2xl bg-card border border-border card-shadow hover:card-hover-shadow transition-all duration-500 overflow-hidden hover:-translate-y-1">
-      {/* Image */}
-      <div className="relative h-48 bg-muted overflow-hidden">
+      {/* 16:9 Aspect Ratio Image Container */}
+      <div className="relative aspect-video bg-muted overflow-hidden">
         <img
           src={vehicle.images[0]}
           alt={vehicle.name}

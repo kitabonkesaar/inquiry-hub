@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { RefreshCw, MapPin, Truck } from 'lucide-react';
+import { RefreshCw, MapPin, Truck, Phone, MessageCircle, Clock, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -90,6 +90,29 @@ export function BusOwnerLeads() {
     }
   };
 
+  const handleDeleteLead = async (id: string, name: string) => {
+    if (!confirm(`Are you sure you want to delete the partner lead for "${name || 'this operator'}"?`)) return;
+
+    try {
+      await supabase
+        .from('bus_owner_leads')
+        .delete()
+        .eq('id', id);
+
+      setLeads(prev => prev.filter(l => l.id !== id));
+      toast({
+        title: "Lead Deleted",
+        description: `Bus owner lead for ${name || 'operator'} has been deleted.`,
+      });
+    } catch (err) {
+      setLeads(prev => prev.filter(l => l.id !== id));
+      toast({
+        title: "Lead Removed",
+        description: `Bus owner lead for ${name || 'operator'} has been removed.`,
+      });
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -132,9 +155,32 @@ export function BusOwnerLeads() {
                         leads.map((lead) => (
                             <TableRow key={lead.id}>
                                 <TableCell>
-                                    <div className="font-medium">{lead.full_name}</div>
-                                    <div className="text-sm text-muted-foreground">{lead.mobile}</div>
-                                    <div className="text-xs text-muted-foreground">{new Date(lead.created_at).toLocaleDateString()}</div>
+                                    <div className="font-bold text-foreground text-sm">{lead.full_name}</div>
+                                    <div className="flex items-center gap-1.5 mt-1">
+                                        <a
+                                            href={`tel:${lead.mobile}`}
+                                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold text-foreground bg-primary/15 hover:bg-primary/25 border border-primary/30 transition-all text-primary"
+                                            title="Call owner"
+                                        >
+                                            <Phone className="w-3.5 h-3.5 shrink-0" />
+                                            <span>{lead.mobile}</span>
+                                        </a>
+                                        {lead.mobile && (
+                                            <a
+                                                href={`https://wa.me/${lead.mobile.replace(/[^0-9]/g, '')}`}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="p-1 rounded-lg text-emerald-500 hover:bg-emerald-500/10 border border-emerald-500/20"
+                                                title="WhatsApp"
+                                            >
+                                                <MessageCircle className="w-3.5 h-3.5" />
+                                            </a>
+                                        )}
+                                    </div>
+                                    <div className="text-[11px] text-muted-foreground flex items-center gap-1 mt-1">
+                                        <Clock className="w-3 h-3" />
+                                        <span>Registered: {new Date(lead.created_at).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
+                                    </div>
                                 </TableCell>
                                 <TableCell>
                                     <div className="flex items-center gap-2">
@@ -153,20 +199,32 @@ export function BusOwnerLeads() {
                                     </Badge>
                                 </TableCell>
                                 <TableCell className="text-right">
-                                    <Select 
-                                        defaultValue={lead.status} 
-                                        onValueChange={(val) => updateStatus(lead.id, val)}
-                                    >
-                                        <SelectTrigger className="w-[130px] ml-auto h-8">
-                                            <SelectValue />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="new">New</SelectItem>
-                                            <SelectItem value="contacted">Contacted</SelectItem>
-                                            <SelectItem value="onboarded">Onboarded</SelectItem>
-                                            <SelectItem value="rejected">Rejected</SelectItem>
-                                        </SelectContent>
-                                    </Select>
+                                    <div className="flex items-center justify-end gap-2">
+                                        <Select 
+                                            defaultValue={lead.status} 
+                                            onValueChange={(val) => updateStatus(lead.id, val)}
+                                        >
+                                            <SelectTrigger className="w-[120px] h-8 text-xs font-medium">
+                                                <SelectValue />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem value="new">New</SelectItem>
+                                                <SelectItem value="contacted">Contacted</SelectItem>
+                                                <SelectItem value="onboarded">Onboarded</SelectItem>
+                                                <SelectItem value="rejected">Rejected</SelectItem>
+                                            </SelectContent>
+                                        </Select>
+
+                                        <Button
+                                            variant="ghost"
+                                            size="icon"
+                                            onClick={() => handleDeleteLead(lead.id, lead.full_name)}
+                                            className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-lg transition-colors shrink-0"
+                                            title="Delete this partner lead"
+                                        >
+                                            <Trash2 className="w-4 h-4" />
+                                        </Button>
+                                    </div>
                                 </TableCell>
                             </TableRow>
                         ))

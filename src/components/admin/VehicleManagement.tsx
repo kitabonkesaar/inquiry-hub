@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { Plus, RefreshCw, Bus, Users, Tags, Pencil, Trash2, MoreHorizontal } from 'lucide-react';
+import { Plus, RefreshCw, Bus, Users, Tags, Pencil, Trash2, MoreHorizontal, Search, MapPin, X, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -87,12 +87,99 @@ export function VehicleManagement() {
   );
 }
 
+export const ODISHA_DISTRICTS = [
+  'Khordha (Bhubaneswar)',
+  'Cuttack',
+  'Puri',
+  'Balasore (Baleswar)',
+  'Bhadrak',
+  'Ganjam (Berhampur)',
+  'Sambalpur',
+  'Mayurbhanj (Baripada)',
+  'Jajpur',
+  'Kendrapara',
+  'Angul',
+  'Dhenkanal',
+  'Sundargarh (Rourkela)',
+  'Bargarh',
+  'Jharsuguda',
+  'Keonjhar',
+  'Jagatsinghpur',
+  'Nayagarh',
+  'Koraput',
+  'Rayagada',
+  'Bolangir',
+  'Kalahandi',
+  'Gajapati',
+  'Kandhamal',
+  'Boudh',
+  'Subarnapur (Sonepur)',
+  'Nuapada',
+  'Deogarh',
+  'Nabarangpur',
+  'Malkangiri'
+];
+
+const DEFAULT_DISTRICT_MAP: Record<string, string> = {
+  'khirochora': 'Balasore (Baleswar)',
+  'indrani': 'Bhadrak',
+  'bana durga': 'Puri',
+  'sumani': 'Ganjam (Berhampur)',
+  'nila madhaba': 'Khordha (Bhubaneswar)',
+  'nila madhaba bus 2': 'Khordha (Bhubaneswar)',
+  'shree jagannath': 'Puri',
+  'sanskar new 2x1': 'Cuttack',
+  'baba mani ipsita bus': 'Jajpur',
+  'shree ram bus': 'Mayurbhanj (Baripada)',
+  'luxury ac sleeper bus': 'Khordha (Bhubaneswar)',
+  'tempo traveller 12 seater': 'Cuttack',
+  'non-ac deluxe bus': 'Sambalpur',
+};
+
+const DISTRICT_STORAGE_KEY = 'rentanybus_vehicle_districts';
+
+export function getStoredVehicleDistricts(): Record<string, string> {
+  try {
+    const raw = localStorage.getItem(DISTRICT_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
+export function saveVehicleDistrict(vehicleId: string, vehicleName: string, district: string) {
+  try {
+    const map = getStoredVehicleDistricts();
+    if (vehicleId) map[vehicleId] = district;
+    if (vehicleName) map[vehicleName.toLowerCase().trim()] = district;
+    localStorage.setItem(DISTRICT_STORAGE_KEY, JSON.stringify(map));
+  } catch (e) {
+    console.error('Failed to save vehicle district:', e);
+  }
+}
+
+export function resolveVehicleDistrict(v: any): string {
+  if (v.district && typeof v.district === 'string' && v.district.trim()) return v.district.trim();
+  const stored = getStoredVehicleDistricts();
+  if (v.id && stored[v.id]) return stored[v.id];
+  const nameKey = (v.name || '').toLowerCase().trim();
+  if (stored[nameKey]) return stored[nameKey];
+  for (const [key, val] of Object.entries(DEFAULT_DISTRICT_MAP)) {
+    if (nameKey.includes(key) || key.includes(nameKey)) {
+      return val;
+    }
+  }
+  return 'Khordha (Bhubaneswar)';
+}
+
 function VehiclesList() {
     const { toast } = useToast();
     const [vehicles, setVehicles] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [editingVehicle, setEditingVehicle] = useState<any>(null);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [districtFilter, setDistrictFilter] = useState('all');
 
     const fetchVehicles = async () => {
         setLoading(true);
@@ -142,47 +229,170 @@ function VehiclesList() {
         fetchVehicles();
     };
 
+    const filteredVehicles = vehicles.filter((v) => {
+        const district = resolveVehicleDistrict(v).toLowerCase();
+        const name = (v.name || '').toLowerCase();
+        const type = (v.type || '').toLowerCase();
+        const operator = (v.operator?.business_name || '').toLowerCase();
+        const contact = (v.agent_contact_number || v.operator?.contact_number || '').toLowerCase();
+        const capacity = String(v.seating_capacity || '');
+        const price = (v.price_display || '').toLowerCase();
+
+        // District filter
+        if (districtFilter !== 'all') {
+            if (!district.includes(districtFilter.toLowerCase())) return false;
+        }
+
+        // Search query
+        if (searchQuery.trim()) {
+            const q = searchQuery.toLowerCase().trim();
+            const matches =
+                name.includes(q) ||
+                district.includes(q) ||
+                type.includes(q) ||
+                operator.includes(q) ||
+                contact.includes(q) ||
+                capacity.includes(q) ||
+                price.includes(q);
+            if (!matches) return false;
+        }
+
+        return true;
+    });
+
     return (
         <div className="space-y-4">
-            <div className="flex justify-end">
-                <Button onClick={handleAddNew}>
-                    <Plus className="w-4 h-4 mr-2" />
-                    Add New Vehicle
-                </Button>
+            {/* Search Bar & Nearest Boarding Location Tool */}
+            <div className="bg-card border rounded-2xl p-4 shadow-xs space-y-3">
+                <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+                    {/* Search Input */}
+                    <div className="relative flex-1">
+                        <Search className="w-4 h-4 text-muted-foreground absolute left-3 top-1/2 -translate-y-1/2" />
+                        <Input
+                            placeholder="Find bus for client: Search by District (e.g. Balasore, Cuttack), Bus Name, Seats (e.g. 54)..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="pl-9 pr-8 h-10 rounded-xl text-sm bg-background/80"
+                        />
+                        {searchQuery && (
+                            <button
+                                type="button"
+                                onClick={() => setSearchQuery('')}
+                                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground p-1"
+                            >
+                                <X className="w-4 h-4" />
+                            </button>
+                        )}
+                    </div>
+
+                    {/* District Filter Dropdown */}
+                    <div className="flex items-center gap-2">
+                        <div className="w-56 sm:w-60">
+                            <Select value={districtFilter} onValueChange={setDistrictFilter}>
+                                <SelectTrigger className="h-10 rounded-xl text-xs">
+                                    <div className="flex items-center gap-1.5 truncate">
+                                        <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
+                                        <SelectValue placeholder="All Districts" />
+                                    </div>
+                                </SelectTrigger>
+                                <SelectContent className="max-h-60 text-xs">
+                                    <SelectItem value="all">All Odisha Districts</SelectItem>
+                                    {ODISHA_DISTRICTS.map((d) => (
+                                        <SelectItem key={d} value={d}>
+                                            {d}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        </div>
+
+                        {/* Add New Vehicle Button */}
+                        <Button onClick={handleAddNew} className="h-10 rounded-xl shrink-0 font-semibold shadow-xs">
+                            <Plus className="w-4 h-4 mr-2" />
+                            Add New Vehicle
+                        </Button>
+                    </div>
+                </div>
+
+                {/* Status / Matching Count Summary */}
+                <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground pt-2 border-t">
+                    <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-semibold text-foreground">
+                            Showing {filteredVehicles.length} of {vehicles.length} vehicles
+                        </span>
+                        {districtFilter !== 'all' && (
+                            <Badge variant="outline" className="text-[11px] bg-primary/5 text-primary border-primary/20 flex items-center gap-1">
+                                <MapPin className="w-3 h-3" /> Boarding District: {districtFilter}
+                            </Badge>
+                        )}
+                        {searchQuery && (
+                            <Badge variant="secondary" className="text-[11px]">
+                                Matching: "{searchQuery}"
+                            </Badge>
+                        )}
+                    </div>
+
+                    {(searchQuery || districtFilter !== 'all') && (
+                        <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => {
+                                setSearchQuery('');
+                                setDistrictFilter('all');
+                            }}
+                            className="h-7 text-xs text-muted-foreground hover:text-foreground"
+                        >
+                            Reset Search
+                        </Button>
+                    )}
+                </div>
             </div>
 
-            <div className="border rounded-md">
+            <div className="border rounded-xl overflow-hidden bg-card shadow-xs">
                 <Table>
-                    <TableHeader>
+                    <TableHeader className="bg-muted/40">
                         <TableRow>
-                            <TableHead>Name</TableHead>
-                            <TableHead>Type</TableHead>
-                            <TableHead>Category</TableHead>
-                            <TableHead>Capacity</TableHead>
-                            <TableHead>Layout</TableHead>
-                            <TableHead>Operator</TableHead>
-                            <TableHead>Contact</TableHead>
-                            <TableHead>Price</TableHead>
-                            <TableHead>Status</TableHead>
-                            <TableHead className="text-right">Actions</TableHead>
+                            <TableHead className="font-semibold">Name</TableHead>
+                            <TableHead className="font-semibold">District</TableHead>
+                            <TableHead className="font-semibold">Type</TableHead>
+                            <TableHead className="font-semibold">Category</TableHead>
+                            <TableHead className="font-semibold">Capacity</TableHead>
+                            <TableHead className="font-semibold">Layout</TableHead>
+                            <TableHead className="font-semibold">Operator</TableHead>
+                            <TableHead className="font-semibold">Contact</TableHead>
+                            <TableHead className="font-semibold">Price</TableHead>
+                            <TableHead className="font-semibold">Status</TableHead>
+                            <TableHead className="text-right font-semibold">Actions</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         {loading ? (
                             <TableRow>
-                                <TableCell colSpan={10} className="text-center py-8 text-muted-foreground">
-                                    <RefreshCw className="w-4 h-4 animate-spin inline mr-2" />
-                                    Loading...
+                                <TableCell colSpan={11} className="text-center py-10 text-muted-foreground">
+                                    <RefreshCw className="w-4 h-4 animate-spin inline mr-2 text-primary" />
+                                    Loading fleet...
                                 </TableCell>
                             </TableRow>
-                        ) : vehicles.length === 0 ? (
+                        ) : filteredVehicles.length === 0 ? (
                             <TableRow>
-                                <TableCell colSpan={10} className="text-center py-8 text-muted-foreground">No vehicles found.</TableCell>
+                                <TableCell colSpan={11} className="text-center py-10 text-muted-foreground">
+                                    <div className="flex flex-col items-center justify-center gap-1.5">
+                                        <MapPin className="w-6 h-6 text-muted-foreground/60" />
+                                        <p className="font-medium text-foreground">No vehicles found matching your criteria.</p>
+                                        <p className="text-xs">Try selecting a neighboring district or clearing search terms.</p>
+                                    </div>
+                                </TableCell>
                             </TableRow>
                         ) : (
-                            vehicles.map((v) => (
-                                <TableRow key={v.id}>
-                                    <TableCell className="font-medium">{v.name}</TableCell>
+                            filteredVehicles.map((v) => (
+                                <TableRow key={v.id} className="hover:bg-muted/20">
+                                    <TableCell className="font-semibold text-foreground">{v.name}</TableCell>
+                                    <TableCell>
+                                        <div className="flex items-center gap-1.5 font-medium text-xs text-foreground whitespace-nowrap">
+                                            <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
+                                            <span>{resolveVehicleDistrict(v)}</span>
+                                        </div>
+                                    </TableCell>
                                     <TableCell className="capitalize">{v.type}</TableCell>
                                     <TableCell>{v.is_ac ? 'AC' : 'Non-AC'}</TableCell>
                                     <TableCell>{v.seating_capacity} Seats</TableCell>
@@ -201,7 +411,7 @@ function VehiclesList() {
                                             </a>
                                         ) : '-'}
                                     </TableCell>
-                                    <TableCell>{v.price_display}</TableCell>
+                                    <TableCell className="font-medium">{v.price_display}</TableCell>
                                     <TableCell>
                                         <Badge variant={
                                             v.availability_status === 'available' ? 'default' :
@@ -270,7 +480,8 @@ function VehicleDialog({ open, onOpenChange, vehicle, onSuccess }: {
         availability_status: 'available',
         bus_layout: '2x2',
         operator_id: '',
-        agent_contact_number: ''
+        agent_contact_number: '',
+        district: 'Khordha (Bhubaneswar)'
     });
 
     useEffect(() => {
@@ -295,7 +506,8 @@ function VehicleDialog({ open, onOpenChange, vehicle, onSuccess }: {
                 availability_status: vehicle.availability_status || 'available',
                 bus_layout: vehicle.bus_layout || '2x2',
                 operator_id: vehicle.operator_id || '',
-                agent_contact_number: vehicle.agent_contact_number || ''
+                agent_contact_number: vehicle.agent_contact_number || '',
+                district: resolveVehicleDistrict(vehicle)
             });
         } else {
             setFormData({
@@ -310,7 +522,8 @@ function VehicleDialog({ open, onOpenChange, vehicle, onSuccess }: {
                 availability_status: 'available',
                 bus_layout: '2x2',
                 operator_id: '',
-                agent_contact_number: ''
+                agent_contact_number: '',
+                district: 'Khordha (Bhubaneswar)'
             });
         }
     }, [vehicle, open]);
@@ -320,26 +533,51 @@ function VehicleDialog({ open, onOpenChange, vehicle, onSuccess }: {
         setLoading(true);
 
         try {
-            const payload = {
+            const districtVal = formData.district || 'Khordha (Bhubaneswar)';
+            saveVehicleDistrict(vehicle?.id, formData.name, districtVal);
+
+            const payload: any = {
                 ...formData,
                 seating_capacity: parseInt(formData.seating_capacity) || 0,
                 amenities: formData.amenities.split(',').map(s => s.trim()).filter(Boolean),
                 images: formData.images.split(/[\n,]+/).map(s => s.trim()).filter(Boolean),
                 operator_id: (formData.operator_id === 'none' || !formData.operator_id) ? null : formData.operator_id,
-                // agent_contact_number: formData.agent_contact_number || null // Temporarily disabled: Column missing in DB
+                agent_contact_number: formData.agent_contact_number || null,
+                district: districtVal
             };
 
             if (vehicle?.id) {
-                const { error } = await supabase
+                let { error } = await supabase
                     .from('vehicles')
                     .update(payload)
                     .eq('id', vehicle.id);
+                
+                // If remote database column does not exist yet, fallback to saving without district column
+                if (error && error.message?.toLowerCase().includes('district')) {
+                    delete payload.district;
+                    const retry = await supabase
+                        .from('vehicles')
+                        .update(payload)
+                        .eq('id', vehicle.id);
+                    error = retry.error;
+                }
+
                 if (error) throw error;
                 toast({ title: 'Success', description: 'Vehicle updated successfully' });
             } else {
-                const { error } = await supabase
+                let { error } = await supabase
                     .from('vehicles')
                     .insert([payload]);
+
+                // If remote database column does not exist yet, fallback to saving without district column
+                if (error && error.message?.toLowerCase().includes('district')) {
+                    delete payload.district;
+                    const retry = await supabase
+                        .from('vehicles')
+                        .insert([payload]);
+                    error = retry.error;
+                }
+
                 if (error) throw error;
                 toast({ title: 'Success', description: 'Vehicle created successfully' });
             }
@@ -368,6 +606,25 @@ function VehicleDialog({ open, onOpenChange, vehicle, onSuccess }: {
                                 onChange={e => setFormData({...formData, name: e.target.value})} 
                                 required 
                             />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="district">District / Boarding Location</Label>
+                            <Select 
+                                value={formData.district} 
+                                onValueChange={val => setFormData({...formData, district: val})}
+                            >
+                                <SelectTrigger id="district">
+                                    <div className="flex items-center gap-1.5 truncate">
+                                        <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
+                                        <SelectValue placeholder="Select District" />
+                                    </div>
+                                </SelectTrigger>
+                                <SelectContent className="max-h-60 text-xs">
+                                    {ODISHA_DISTRICTS.map(d => (
+                                        <SelectItem key={d} value={d}>{d}</SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="type">Type</Label>

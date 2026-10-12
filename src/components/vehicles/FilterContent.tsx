@@ -1,4 +1,4 @@
-import { Filter, X } from 'lucide-react';
+import { SlidersHorizontal, RotateCcw, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface FilterContentProps {
@@ -19,48 +19,61 @@ export function FilterContent({
   className
 }: FilterContentProps) {
   return (
-    <div className={cn("space-y-6", className)}>
-      <div className="flex items-center justify-between mb-6">
-        <h3 className="font-semibold text-foreground flex items-center gap-2">
-          <Filter className="w-5 h-5" />
-          Filters
-        </h3>
+    <div className={cn("space-y-5 text-xs", className)}>
+      {/* Header */}
+      <div className="flex items-center justify-between pb-3 border-b border-border/70">
+        <div className="flex items-center gap-2">
+          <SlidersHorizontal className="w-4 h-4 text-primary shrink-0" />
+          <span className="font-bold text-sm tracking-tight text-foreground">Filters</span>
+          {hasActiveFilters && (
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+          )}
+        </div>
         {hasActiveFilters && (
           <button
+            type="button"
             onClick={clearFilters}
-            className="text-sm text-accent hover:underline flex items-center gap-1"
+            className="text-[11px] font-medium text-muted-foreground hover:text-foreground flex items-center gap-1 transition-colors"
           >
-            <X className="w-4 h-4" />
-            Clear
+            <RotateCcw className="w-3 h-3" />
+            Reset all
           </button>
         )}
       </div>
 
-      {/* Filter Groups */}
-      <div className="space-y-6">
-        {Object.entries(filterOptions).map(([key, options]) => (
-          <div key={key}>
-            <label className="block text-sm font-medium text-foreground mb-2 capitalize">
-              {key === 'category' ? 'AC Type' : key}
-            </label>
-            <div className="space-y-2">
-              {options.map((option) => (
-                <button
-                  key={option.value}
-                  onClick={() => handleFilterChange(key, option.value)}
-                  className={cn(
-                    "w-full text-left px-4 py-2 rounded-lg text-sm transition-all",
-                    filters[key] === option.value
-                      ? "bg-accent text-accent-foreground font-medium"
-                      : "bg-muted text-muted-foreground hover:bg-muted/80"
-                  )}
-                >
-                  {option.label}
-                </button>
-              ))}
+      {/* Filter Categories as Minimalist Inline Chips */}
+      <div className="space-y-4">
+        {Object.entries(filterOptions).map(([key, options]) => {
+          const groupTitle = key === 'category' ? 'AC / Climate' : key === 'type' ? 'Vehicle Type' : key;
+          return (
+            <div key={key} className="space-y-2">
+              <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider block">
+                {groupTitle}
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                {options.map((option) => {
+                  const isSelected = filters[key] === option.value;
+                  return (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => handleFilterChange(key, option.value)}
+                      className={cn(
+                        "px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-150 inline-flex items-center gap-1 select-none",
+                        isSelected
+                          ? "bg-primary text-primary-foreground font-semibold shadow-xs"
+                          : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground border border-transparent"
+                      )}
+                    >
+                      {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
+                      <span>{option.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
