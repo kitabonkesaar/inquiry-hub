@@ -4,32 +4,39 @@ import { Bus, Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lucide-r
 const footerLinks = {
   company: [
     { name: 'About Us', href: '/about' },
-    { name: 'Our Fleet', href: '/vehicles' },
-    { name: 'Tirth Yatra & Tours', href: '/inquiry?trip=pilgrimage' },
+    { name: 'Verified Fleet', href: '/vehicles' },
+    { name: 'Bus Rental Cost Guide', href: '/blog/bus-rental-cost-per-km-odisha-price-guide' },
     { name: 'Travel Guides & Blog', href: '/blog' },
     { name: 'FAQs', href: '/faqs' },
     { name: 'Contact Us', href: '/contact' },
   ],
-  vehicles: [
-    { name: 'Luxury AC Sleeper Coaches', href: '/vehicles?type=bus&category=ac' },
-    { name: 'Deluxe Non-AC Buses', href: '/vehicles?type=bus&category=non-ac' },
-    { name: 'Tempo Travellers (12–26 Seater)', href: '/vehicles?type=traveller' },
-    { name: 'Wedding & Marriage Fleet', href: '/inquiry?trip=wedding' },
-    { name: 'School & College Picnics', href: '/inquiry?trip=picnic' },
+  services: [
+    { name: 'Wedding Bus Rental', href: '/services/wedding-bus-rental' },
+    { name: 'Corporate & Tech Park Shuttles', href: '/services/corporate-bus-rental' },
+    { name: 'Jagannath Puri Yatra Charters', href: '/services/pilgrimage-bus-rental' },
+    { name: 'BBI Airport Group Transfers', href: '/services/airport-transfer' },
+    { name: 'Outstation Group Charters', href: '/vehicles' },
   ],
   cities: [
     { name: 'Bus Rental Bhubaneswar', href: '/bus-rental/bhubaneswar' },
-    { name: 'Bus Rental Puri (Jagannath Yatra)', href: '/bus-rental/puri' },
-    { name: 'Bus Rental Cuttack (Weddings)', href: '/bus-rental/cuttack' },
-    { name: 'Bhubaneswar to Puri Bus Hire', href: '/routes/bhubaneswar-to-puri' },
-    { name: 'Bhubaneswar to Konark Sun Temple', href: '/routes/bhubaneswar-to-konark' },
-    { name: 'Bhubaneswar to Chilika Lake Excursion', href: '/routes/bhubaneswar-to-chilika' },
+    { name: 'Bus Rental Puri', href: '/bus-rental/puri' },
+    { name: 'Bus Rental Cuttack', href: '/bus-rental/cuttack' },
+    { name: 'Bus Rental Berhampur', href: '/bus-rental/berhampur' },
+    { name: 'Bus Rental Balasore', href: '/bus-rental/balasore' },
+    { name: 'Bus Rental Sambalpur', href: '/bus-rental/sambalpur' },
+    { name: 'Bus Rental Rourkela', href: '/bus-rental/rourkela' },
+  ],
+  routes: [
+    { name: 'Bhubaneswar to Puri', href: '/routes/bhubaneswar-to-puri' },
+    { name: 'Bhubaneswar to Konark', href: '/routes/bhubaneswar-to-konark' },
+    { name: 'Bhubaneswar to Chilika', href: '/routes/bhubaneswar-to-chilika' },
+    { name: 'Cuttack to Puri', href: '/routes/cuttack-to-puri' },
+    { name: 'Bhubaneswar to Gopalpur', href: '/routes/bhubaneswar-to-gopalpur' },
   ],
   portals: [
     { name: 'List Your Bus (Owner Portal)', href: '/owner' },
     { name: 'Operator Verification', href: '/owner' },
     { name: 'My Bookings & Profile', href: '/profile' },
-    { name: 'Admin Console', href: '/admin' },
   ],
 };
 
@@ -82,11 +89,11 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Vehicle Fleet */}
+          {/* Services */}
           <div>
-            <h4 className="font-semibold text-xs uppercase tracking-wider text-accent mb-4">Fleet</h4>
+            <h4 className="font-semibold text-xs uppercase tracking-wider text-accent mb-4">Services</h4>
             <ul className="space-y-2.5 text-xs">
-              {footerLinks.vehicles.map((link) => (
+              {footerLinks.services.map((link) => (
                 <li key={link.name}>
                   <Link to={link.href} className="text-white/75 hover:text-white transition-colors">
                     {link.name}
@@ -96,9 +103,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* City Hubs & Popular Routes */}
+          {/* City Hubs */}
           <div>
-            <h4 className="font-semibold text-xs uppercase tracking-wider text-accent mb-4">Cities & Routes</h4>
+            <h4 className="font-semibold text-xs uppercase tracking-wider text-accent mb-4">Cities</h4>
             <ul className="space-y-2.5 text-xs">
               {footerLinks.cities.map((link) => (
                 <li key={link.name}>
@@ -110,13 +117,20 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Portals */}
+          {/* Popular Routes & Portals */}
           <div>
-            <h4 className="font-semibold text-xs uppercase tracking-wider text-accent mb-4">Portals</h4>
+            <h4 className="font-semibold text-xs uppercase tracking-wider text-accent mb-4">Routes & Portals</h4>
             <ul className="space-y-2.5 text-xs">
-              {footerLinks.portals.map((link) => (
+              {footerLinks.routes.map((link) => (
                 <li key={link.name}>
                   <Link to={link.href} className="text-white/75 hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+              {footerLinks.portals.map((link) => (
+                <li key={link.name} className="pt-1">
+                  <Link to={link.href} className="text-accent/90 hover:text-accent font-medium transition-colors">
                     {link.name}
                   </Link>
                 </li>

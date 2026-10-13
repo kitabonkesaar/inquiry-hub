@@ -34,10 +34,10 @@ export function HeroSection() {
           </div>
 
           {/* Heading */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 animate-slide-up tracking-tight">
-            The Trusted Choice for
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 animate-slide-up tracking-tight">
+            Bus Rental & Tempo Traveller Hire
             <br />
-            <span className="text-accent">Group Travel Across Odisha</span>
+            <span className="text-accent">Across Odisha</span>
           </h1>
 
           {/* Subheading */}

@@ -20,6 +20,7 @@ import CustomerProfile from "./pages/CustomerProfile";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import CityHub from "./pages/CityHub";
 import RouteHub from "./pages/RouteHub";
+import ServiceHub from "./pages/ServiceHub";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/vehicles/:id" element={<VehicleDetail />} />
             <Route path="/bus-rental/:city" element={<CityHub />} />
             <Route path="/routes/:routeSlug" element={<RouteHub />} />
+            <Route path="/services/:serviceSlug" element={<ServiceHub />} />
             <Route path="/profile" element={<CustomerProfile />} />
             <Route path="/owner" element={<OwnerDashboard />} />
             <Route path="/owner/dashboard" element={<OwnerDashboard />} />

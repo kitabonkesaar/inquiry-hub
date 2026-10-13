@@ -131,6 +131,142 @@ const CITIES: Record<string, CityData> = {
       'Comfortable dual-chilled AC systems for summer travels',
       '24/7 route coordination and backup fleet guarantee'
     ]
+  },
+  berhampur: {
+    name: 'Berhampur',
+    tagline: 'Silk City Bus & Tempo Traveller Charter for Southern Odisha',
+    metaTitle: 'Bus Rental in Berhampur | Tempo Traveller Hire | RentAnyBus',
+    metaDescription: 'Rent AC buses & tempo travellers in Berhampur (Brahmapur). Outstation charters to Gopalpur Beach, Tara Tarini Temple, and Rayagada.',
+    popularPickupPoints: [
+      'Berhampur Railway Station (BAM)',
+      'New Bus Stand (Haladipadar)',
+      'Old Bus Stand & Giri Road',
+      'Gandhi Nagar & Gosaninuagaon',
+      'Gopalpur Junction'
+    ],
+    pricingTable: [
+      { type: '12 Seater Tempo Traveller', capacity: '12 Guests', ratePerDay: '₹6,500', ratePerKm: '₹22/km' },
+      { type: '17 Seater AC Traveller', capacity: '17 Guests', ratePerDay: '₹8,500', ratePerKm: '₹26/km' },
+      { type: '26 Seater Tourist Coach', capacity: '26 Guests', ratePerDay: '₹10,500', ratePerKm: '₹32/km' },
+      { type: '45 Seater Deluxe Bus', capacity: '45 Guests', ratePerDay: '₹18,000', ratePerKm: '₹45/km' },
+    ],
+    faqs: [
+      {
+        question: 'Can we book a day trip from Berhampur to Tara Tarini and Gopalpur?',
+        answer: 'Yes! Our custom Berhampur 1-day package covers hilltop Tara Tarini Temple darshan and Gopalpur-on-Sea beach sunset before returning to Berhampur.'
+      },
+      {
+        question: 'Are night pickups available at Berhampur Railway Station?',
+        answer: 'Yes, our local chauffeurs track arriving trains and provide 24/7 station pickup with zero delay.'
+      }
+    ],
+    localHighlights: [
+      'Direct coastal routes to Gopalpur and Sonapur beaches',
+      'Spiritual circuits to Tara Tarini & Tampara Lake',
+      'Southern Odisha intercity wedding charter specialists'
+    ]
+  },
+  balasore: {
+    name: 'Balasore',
+    tagline: 'North Odisha Bus & Tempo Traveller Rental for Chandipur & Kuldiha',
+    metaTitle: 'Bus Rental in Balasore | Tempo Traveller Hire | RentAnyBus',
+    metaDescription: 'Hire buses and tempo travellers in Balasore (Baleswar). Group trips to Chandipur Beach, Panchalingeswar Temple, Kuldiha Wildlife Sanctuary & Kolkata.',
+    popularPickupPoints: [
+      'Balasore Railway Station',
+      'Sahadevkhunta Bus Stand',
+      'Station Bazar & Motiganj',
+      'Remuna Golei',
+      'Kuruda Bypass'
+    ],
+    pricingTable: [
+      { type: '12 Seater Tempo Traveller', capacity: '12 Guests', ratePerDay: '₹6,500', ratePerKm: '₹22/km' },
+      { type: '17 Seater Force Urbania', capacity: '17 Guests', ratePerDay: '₹8,500', ratePerKm: '₹26/km' },
+      { type: '26 Seater Pushback Bus', capacity: '26 Guests', ratePerDay: '₹10,500', ratePerKm: '₹32/km' },
+      { type: '45 Seater AC Bus', capacity: '45 Guests', ratePerDay: '₹18,000', ratePerKm: '₹45/km' },
+    ],
+    faqs: [
+      {
+        question: 'Do you offer buses for Kolkata trips from Balasore?',
+        answer: 'Yes, we provide inter-state permit tourist buses and tempo travellers from Balasore to Kolkata and Digha with all road taxes paid.'
+      },
+      {
+        question: 'Can we take a tempo traveller to Panchalingeswar and Chandipur?',
+        answer: 'Absolutely. We organize comfortable same-day group sightseeing covering Chandipur vanishing sea beach and Panchalingeswar hill temple.'
+      }
+    ],
+    localHighlights: [
+      'Inter-state road permits for West Bengal & Jharkhand tours',
+      'Scenic excursions to Chandipur, Talasari & Panchalingeswar',
+      'Industrial corporate transport for Balasore industrial corridors'
+    ]
+  },
+  rourkela: {
+    name: 'Rourkela',
+    tagline: 'Steel City Bus Rental for Corporate, Sports & Western Odisha Tours',
+    metaTitle: 'Bus Rental in Rourkela | Tempo Traveller Hire | RentAnyBus',
+    metaDescription: 'Book luxury buses and tempo travellers in Rourkela for SAIL corporate trips, sports events at Birsa Munda Stadium, Mandira Dam, and outstation tours.',
+    popularPickupPoints: [
+      'Rourkela Railway Station',
+      'Panposh Bus Stand',
+      'Udit Nagar & Civil Township',
+      'Koel Nagar & Chhend Colony',
+      'Sector 5 & Birsa Munda Stadium'
+    ],
+    pricingTable: [
+      { type: '12 Seater Tempo Traveller', capacity: '12 Guests', ratePerDay: '₹7,000', ratePerKm: '₹23/km' },
+      { type: '17 Seater AC Traveller', capacity: '17 Guests', ratePerDay: '₹9,000', ratePerKm: '₹27/km' },
+      { type: '26 Seater Executive Coach', capacity: '26 Guests', ratePerDay: '₹11,500', ratePerKm: '₹33/km' },
+      { type: '45 Seater Luxury Bus', capacity: '45 Guests', ratePerDay: '₹19,000', ratePerKm: '₹46/km' },
+    ],
+    faqs: [
+      {
+        question: 'Can we hire buses for sports teams visiting Birsa Munda Hockey Stadium?',
+        answer: 'Yes. RentAnyBus provides air-conditioned team buses with dedicated luggage bays for sports gear and priority venue parking.'
+      },
+      {
+        question: 'Do you provide daily corporate shuttles for plant staff?',
+        answer: 'Yes, we handle recurring executive and staff transport contracts for industrial units around Rourkela and Kalunga.'
+      }
+    ],
+    localHighlights: [
+      'Official sports event and tournament transportation',
+      'Corporate charters for SAIL Rourkela Steel Plant & IT firms',
+      'Western Odisha highway connectivity to Sambalpur & Ranchi'
+    ]
+  },
+  sambalpur: {
+    name: 'Sambalpur',
+    tagline: 'Cultural Hub Bus Hire for Hirakud Dam, Samaleswari & Western Odisha',
+    metaTitle: 'Bus Rental in Sambalpur | Tempo Traveller Hire | RentAnyBus',
+    metaDescription: 'Hire AC tempo travellers and buses in Sambalpur for Maa Samaleswari Temple pilgrimage, Hirakud Dam excursions, Debrigarh Sanctuary, and weddings.',
+    popularPickupPoints: [
+      'Sambalpur Junction / Khetrajpur',
+      'Ainthapali Bus Stand',
+      'Dhanupali & Budharaja',
+      'Burla & VSSUT Campus',
+      'Hirakud Colony'
+    ],
+    pricingTable: [
+      { type: '12 Seater Tempo Traveller', capacity: '12 Guests', ratePerDay: '₹6,800', ratePerKm: '₹22/km' },
+      { type: '17 Seater Force Urbania', capacity: '17 Guests', ratePerDay: '₹8,800', ratePerKm: '₹26/km' },
+      { type: '26 Seater Tourist Bus', capacity: '26 Guests', ratePerDay: '₹11,000', ratePerKm: '₹32/km' },
+      { type: '45 Seater Deluxe Coach', capacity: '45 Guests', ratePerDay: '₹18,500', ratePerKm: '₹45/km' },
+    ],
+    faqs: [
+      {
+        question: 'How do I book a tour bus to Hirakud Dam and Debrigarh Sanctuary?',
+        answer: 'Select your preferred vehicle size on RentAnyBus and request a quote. Our Sambalpur coordinator arranges vehicles with sanctuary eco-tour clearance.'
+      },
+      {
+        question: 'Do you offer wedding buses in Sambalpur and Bargarh?',
+        answer: 'Yes, we provide decorated marriage barat buses and guest shuttles across Sambalpur, Burla, Bargarh, and Jharsuguda.'
+      }
+    ],
+    localHighlights: [
+      'Pilgrimage charters to Maa Samaleswari Temple & Huma Leaning Temple',
+      'Eco-tourism packages for Hirakud Dam & Debrigarh Sanctuary',
+      'Burla university and campus student tour charters'
+    ]
   }
 };
 

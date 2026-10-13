@@ -129,12 +129,35 @@ const BlogPost = () => {
             )}
 
             <div 
-                className="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-primary"
+                className="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-primary mb-12"
                 dangerouslySetInnerHTML={{ __html: post.content }}
             />
 
+            {/* In-Article Conversion Banner */}
+            <div className="rounded-2xl bg-gradient-to-r from-primary to-slate-900 text-white p-8 md:p-10 my-10 shadow-xl border border-white/10">
+              <div className="max-w-2xl">
+                <span className="inline-block px-3 py-1 bg-accent text-[#081829] rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+                  Transparent Odisha Bus Charter
+                </span>
+                <h3 className="text-2xl md:text-3xl font-black mb-3">
+                  Need a Verified Bus or Tempo Traveller for Your Trip?
+                </h3>
+                <p className="text-slate-300 mb-6 text-sm md:text-base leading-relaxed">
+                  Rent directly from verified fleet owners across Bhubaneswar, Cuttack, Puri, and outstation Odisha. Get 100% itemized pricing with zero surprise charges.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Button asChild variant="accent" size="lg" className="font-bold">
+                    <Link to="/inquiry">Request All-Inclusive Quote</Link>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
+                    <Link to="/vehicles">Browse 12–55 Seater Fleet</Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+
             {post.tags && post.tags.length > 0 && (
-                <div className="mt-12 pt-8 border-t">
+                <div className="mt-8 pt-8 border-t">
                     <div className="flex items-center gap-2 flex-wrap">
                         <TagIcon className="w-4 h-4 text-muted-foreground" />
                         <span className="font-semibold mr-2">Tags:</span>

@@ -1,58 +1,84 @@
 import { supabase } from "@/integrations/supabase/client";
 import { BlogPost, CreatePostDTO, Category, Tag, Author } from "@/types/blog";
+import { CORNERSTONE_POSTS } from "@/data/blogPosts";
 
 export const blogService = {
   // Public methods
   async getPublishedPosts(page = 1, limit = 6) {
-    const from = (page - 1) * limit;
-    const to = from + limit - 1;
+    try {
+      const from = (page - 1) * limit;
+      const to = from + limit - 1;
 
-    const { data, error, count } = await supabase
-      .from("blog_posts")
-      .select(`
-        *,
-        author:blog_authors(*),
-        blog_post_categories(blog_categories(*)),
-        blog_post_tags(blog_tags(*))
-      `, { count: "exact" })
-      .eq("status", "published")
-      .order("published_at", { ascending: false })
-      .range(from, to);
+      const { data, error, count } = await supabase
+        .from("blog_posts")
+        .select(`
+          *,
+          author:blog_authors(*),
+          blog_post_categories(blog_categories(*)),
+          blog_post_tags(blog_tags(*))
+        `, { count: "exact" })
+        .eq("status", "published")
+        .order("published_at", { ascending: false })
+        .range(from, to);
 
-    if (error) throw error;
-    
-    // Transform to match BlogPost interface
-    const posts = data.map((post: any) => ({
-        ...post,
-        categories: post.blog_post_categories?.map((c: any) => c.blog_categories) || [],
-        tags: post.blog_post_tags?.map((t: any) => t.blog_tags) || []
-    })) as BlogPost[]; 
+      if (!error && data && data.length > 0) {
+        // Transform to match BlogPost interface
+        const dbPosts = data.map((post: any) => ({
+            ...post,
+            categories: post.blog_post_categories?.map((c: any) => c.blog_categories) || [],
+            tags: post.blog_post_tags?.map((t: any) => t.blog_tags) || []
+        })) as BlogPost[];
 
-    return { posts, count }; 
+        // Combine DB posts with cornerstone posts if not already present
+        const dbSlugs = new Set(dbPosts.map(p => p.slug));
+        const missingCornerstone = CORNERSTONE_POSTS.filter(p => !dbSlugs.has(p.slug));
+        const allPosts = [...dbPosts, ...missingCornerstone];
+        return { 
+          posts: allPosts.slice((page - 1) * limit, page * limit), 
+          count: (count || 0) + missingCornerstone.length 
+        };
+      }
+    } catch (err) {
+      console.warn("Supabase blog fetch fallback to cornerstone posts:", err);
+    }
+
+    // Default fallback to curated cornerstone posts
+    const startIndex = (page - 1) * limit;
+    const paginated = CORNERSTONE_POSTS.slice(startIndex, startIndex + limit);
+    return { posts: paginated, count: CORNERSTONE_POSTS.length };
   },
 
   async getPostBySlug(slug: string) {
-    const { data, error } = await supabase
-      .from("blog_posts")
-      .select(`
-        *,
-        author:blog_authors(*),
-        blog_post_categories(blog_categories(*)),
-        blog_post_tags(blog_tags(*))
-      `)
-      .eq("slug", slug)
-      .single();
+    try {
+      const { data, error } = await supabase
+        .from("blog_posts")
+        .select(`
+          *,
+          author:blog_authors(*),
+          blog_post_categories(blog_categories(*)),
+          blog_post_tags(blog_tags(*))
+        `)
+        .eq("slug", slug)
+        .single();
 
-    if (error) throw error;
+      if (!error && data) {
+        return {
+            ...data,
+            categories: data.blog_post_categories?.map((item: any) => item.blog_categories) || [],
+            tags: data.blog_post_tags?.map((item: any) => item.blog_tags) || []
+        } as BlogPost;
+      }
+    } catch (err) {
+      console.warn("Supabase post lookup fallback to cornerstone posts:", err);
+    }
+
+    // Check cornerstone posts
+    const found = CORNERSTONE_POSTS.find(p => p.slug === slug);
+    if (found) {
+      return found;
+    }
     
-    // Flatten the data structure
-    const post = {
-        ...data,
-        categories: data.blog_post_categories.map((item: any) => item.blog_categories),
-        tags: data.blog_post_tags.map((item: any) => item.blog_tags)
-    };
-
-    return post as BlogPost;
+    throw new Error(`Blog post with slug "${slug}" not found`);
   },
 
   // Admin methods

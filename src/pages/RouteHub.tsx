@@ -121,6 +121,68 @@ const ROUTES: Record<string, RouteData> = {
         answer: 'Yes, the vehicle and chauffeur remain on standby at the boat jetty until your group completes the safari and lunch.'
       }
     ]
+  },
+  'cuttack-to-puri': {
+    from: 'Cuttack',
+    to: 'Puri Jagannath Dham',
+    distanceKm: '85 km',
+    durationHours: '2 hrs 15 mins',
+    highway: 'NH 16 to Bhubaneswar Bypass & NH 316 Expressway',
+    metaTitle: 'Cuttack to Puri Bus Rental & Tempo Traveller Hire | RentAnyBus',
+    metaDescription: 'Rent bus and tempo traveller from Cuttack to Puri for Jagannath Temple Darshan, wedding parties & beach tours. Fixed fares, tolls and driver batta included.',
+    highlights: [
+      'Direct highway route bypassing central Bhubaneswar city traffic',
+      'Doorstep pickups across CDA, Badambadi, and Link Road',
+      'Safe senior-friendly pilgrim transit with verified chauffeurs',
+      'Optional return via Dhauli Peace Pagoda and Pipili'
+    ],
+    pricingOptions: [
+      { vehicle: '12 Seater Tempo Traveller', seats: '12 Seats', estimatedRoundTrip: '₹6,500 - ₹7,500', dryRate: '₹22/km' },
+      { vehicle: '17 Seater Force Urbania', seats: '17 Seats', estimatedRoundTrip: '₹8,500 - ₹9,800', dryRate: '₹26/km' },
+      { vehicle: '26 Seater AC Traveller', seats: '26 Seats', estimatedRoundTrip: '₹11,500 - ₹13,000', dryRate: '₹32/km' },
+      { vehicle: '45 Seater AC Coach', seats: '45 Seats', estimatedRoundTrip: '₹18,000 - ₹21,000', dryRate: '₹45/km' },
+    ],
+    faqs: [
+      {
+        question: 'Can the bus pick up passengers from multiple points in Cuttack?',
+        answer: 'Yes, our coordinator can arrange pickups across CDA Sector 9, Badambadi, and Madhupatna before heading onto the highway to Puri.'
+      },
+      {
+        question: 'Are NH 16 and NH 316 tolls included in the fare?',
+        answer: 'Yes, all our Cuttack-to-Puri charter packages come with FASTag tolls, driver allowance, and parking charges included.'
+      }
+    ]
+  },
+  'bhubaneswar-to-gopalpur': {
+    from: 'Bhubaneswar',
+    to: 'Gopalpur-on-Sea & Tampara',
+    distanceKm: '170 km',
+    durationHours: '3 hrs 30 mins',
+    highway: 'NH 16 South Corridor via Khordha & Ganjam',
+    metaTitle: 'Bhubaneswar to Gopalpur Bus Rental & Tempo Traveller | RentAnyBus',
+    metaDescription: 'Book AC tempo traveller & bus hire from Bhubaneswar to Gopalpur Beach and Tampara Lake. Weekend group tours, beach retreats & corporate offsites.',
+    highlights: [
+      'Scenic coastal drive along Southern Odisha highway NH 16',
+      'Tampara Lake water sports and boating stopover',
+      'Historic Gopalpur lighthouse and quiet sandy beaches',
+      'Hilltop Maa Tara Tarini Temple spiritual extension'
+    ],
+    pricingOptions: [
+      { vehicle: '12 Seater Tempo Traveller', seats: '12 Seats', estimatedRoundTrip: '₹8,500 - ₹9,800', dryRate: '₹22/km' },
+      { vehicle: '17 Seater Force Urbania', seats: '17 Seats', estimatedRoundTrip: '₹10,500 - ₹12,500', dryRate: '₹26/km' },
+      { vehicle: '26 Seater Luxury Coach', seats: '26 Seats', estimatedRoundTrip: '₹14,500 - ₹17,000', dryRate: '₹32/km' },
+      { vehicle: '45 Seater Tourist Coach', seats: '45 Seats', estimatedRoundTrip: '₹22,000 - ₹25,500', dryRate: '₹45/km' },
+    ],
+    faqs: [
+      {
+        question: 'Can we visit Tara Tarini Temple and Gopalpur Beach on the same trip?',
+        answer: 'Yes! Most groups do a morning darshan at Tara Tarini Temple in Purushottampur and spend the afternoon and evening at Gopalpur Beach.'
+      },
+      {
+        question: 'Is overnight stay available for the bus and driver in Gopalpur?',
+        answer: 'Yes, our multi-day packages include overnight driver night allowances with zero hassle.'
+      }
+    ]
   }
 };
 

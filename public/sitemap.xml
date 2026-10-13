@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Core Pages -->
+  <!-- Core Static Pages -->
   <url>
     <loc>https://www.rentanybus.com/</loc>
     <lastmod>2026-10-14</lastmod>
@@ -50,7 +50,33 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- City Hub Pages -->
+  <!-- Service Use-Case Hubs -->
+  <url>
+    <loc>https://www.rentanybus.com/services/wedding-bus-rental</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.rentanybus.com/services/corporate-bus-rental</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.rentanybus.com/services/pilgrimage-bus-rental</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.rentanybus.com/services/airport-transfer</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Regional City Hubs -->
   <url>
     <loc>https://www.rentanybus.com/bus-rental/bhubaneswar</loc>
     <lastmod>2026-10-14</lastmod>
@@ -69,8 +95,32 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://www.rentanybus.com/bus-rental/berhampur</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rentanybus.com/bus-rental/balasore</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rentanybus.com/bus-rental/sambalpur</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rentanybus.com/bus-rental/rourkela</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-  <!-- High-Volume Route Pages -->
+  <!-- High-Volume Route Hubs -->
   <url>
     <loc>https://www.rentanybus.com/routes/bhubaneswar-to-puri</loc>
     <lastmod>2026-10-14</lastmod>
@@ -87,10 +137,42 @@
     <loc>https://www.rentanybus.com/routes/bhubaneswar-to-chilika</loc>
     <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rentanybus.com/routes/cuttack-to-puri</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rentanybus.com/routes/bhubaneswar-to-gopalpur</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 
-  <!-- Dynamic Vehicles Catalog -->
+  <!-- Cornerstone Blog & Travel Guides -->
+  <url>
+    <loc>https://www.rentanybus.com/blog/bus-rental-cost-per-km-odisha-price-guide</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rentanybus.com/blog/wedding-bus-rental-size-guide-odisha</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rentanybus.com/blog/puri-jagannath-yatra-bus-booking-guide</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Vehicles Catalog -->
   <url>
     <loc>https://www.rentanybus.com/vehicles/1</loc>
     <lastmod>2026-10-14</lastmod>
