@@ -112,11 +112,11 @@ export function LeadFormSection() {
               </div>
             </div>
 
-            <div className="relative mt-4 w-full rounded-2xl overflow-hidden shadow-xl border border-border group">
+            <div className="relative mt-4 w-full rounded-2xl overflow-hidden shadow-lg border border-border/80 bg-muted/20">
               <img
                 src={quoteBannerBus}
-                alt="RentAnyBus Luxury Fleet"
-                className="w-full h-52 sm:h-56 md:h-60 object-cover object-center transition-transform duration-500 group-hover:scale-102"
+                alt="RentAnyBus - Your Journey Our Priority"
+                className="w-full h-auto block object-contain transition-transform duration-300 hover:scale-[1.01]"
               />
             </div>
           </div>
