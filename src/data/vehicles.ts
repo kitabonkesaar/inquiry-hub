@@ -1,6 +1,9 @@
 import bus1 from '@/assets/bus-1.jpg';
 import bus2 from '@/assets/bus-2.jpg';
 import traveller1 from '@/assets/traveller-1.jpg';
+import heroBus from '@/assets/hero-bus.jpg';
+import luxurySleeperBus from '@/assets/luxury-sleeper-bus.jpg';
+import sleeperBusInterior from '@/assets/sleeper-bus-interior.jpg';
 
 export interface Vehicle {
   id: string;
@@ -25,8 +28,8 @@ export const vehicles: Vehicle[] = [
     category: 'ac',
     seatingCapacity: 45,
     pricePerDay: '₹18,000',
-    amenities: ['Air Conditioning', 'Reclining Seats', 'Entertainment System', 'USB Charging', 'WiFi', 'Blankets'],
-    images: [bus1],
+    amenities: ['Air Conditioning', 'Sleeper Berths', 'Entertainment System', 'USB Charging', 'WiFi', 'Blankets'],
+    images: [luxurySleeperBus, sleeperBusInterior],
     description: 'Premium luxury sleeper bus with full air conditioning, individual entertainment screens, and maximum comfort for long-distance travel.',
     idealFor: ['Corporate Events', 'Long Distance Travel', 'Night Journeys', 'Group Tours'],
     availability: 'available',
@@ -52,7 +55,7 @@ export const vehicles: Vehicle[] = [
     seatingCapacity: 12,
     pricePerDay: '₹6,500',
     amenities: ['Air Conditioning', 'Music System', 'Comfortable Seats', 'Luggage Space'],
-    images: [traveller1],
+    images: [traveller1, bus1],
     description: 'Compact and comfortable 12-seater tempo traveller, perfect for small group trips and family outings.',
     idealFor: ['Family Trips', 'Small Group Tours', 'Airport Transfers', 'Local Sightseeing'],
     availability: 'limited',
@@ -65,7 +68,7 @@ export const vehicles: Vehicle[] = [
     seatingCapacity: 17,
     pricePerDay: '₹8,000',
     amenities: ['Air Conditioning', 'Music System', 'Push-back Seats', 'Icebox', 'Charging Points'],
-    images: [traveller1],
+    images: [traveller1, bus1],
     description: 'Spacious 17-seater tempo traveller with premium seating and amenities for medium-sized groups.',
     idealFor: ['Extended Family Trips', 'Office Outings', 'Wedding Groups', 'Pilgrimages'],
     availability: 'available',
@@ -91,7 +94,7 @@ export const vehicles: Vehicle[] = [
     seatingCapacity: 25,
     pricePerDay: '₹12,000',
     amenities: ['Air Conditioning', 'Push-back Seats', 'Music System', 'Curtains', 'First Aid'],
-    images: [bus1],
+    images: [bus2, bus1],
     description: 'Mid-sized AC mini bus perfect for medium groups seeking comfort without the need for a full-size coach.',
     idealFor: ['Medium Groups', 'Corporate Teams', 'Wedding Parties', 'Day Tours'],
     availability: 'booked',
@@ -104,7 +107,7 @@ export const vehicles: Vehicle[] = [
     seatingCapacity: 26,
     pricePerDay: '₹10,500',
     amenities: ['Air Conditioning', 'High-back Seats', 'LED TV', 'Music System', 'Large Luggage Space'],
-    images: [traveller1],
+    images: [traveller1, bus1],
     description: 'Large capacity tempo traveller with premium features, ideal for bigger groups wanting flexibility.',
     idealFor: ['Large Family Groups', 'Office Teams', 'Extended Tours', 'Pilgrimages'],
     availability: 'available',
@@ -117,7 +120,7 @@ export const vehicles: Vehicle[] = [
     seatingCapacity: 40,
     pricePerDay: '₹25,000',
     amenities: ['Multi-zone AC', 'Semi-sleeper Seats', 'Personal Entertainment', 'WiFi', 'Refreshments', 'Toilet'],
-    images: [bus2],
+    images: [heroBus, bus2],
     description: 'Ultra-premium Volvo coach with top-tier amenities including onboard toilet, WiFi, and personal entertainment systems.',
     idealFor: ['VIP Travel', 'Long Distance Luxury', 'Corporate Executives', 'Premium Tours'],
     availability: 'limited',

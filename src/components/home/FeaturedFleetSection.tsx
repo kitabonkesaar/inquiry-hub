@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import bus1 from '@/assets/bus-1.jpg';
+import luxurySleeperBus from '@/assets/luxury-sleeper-bus.jpg';
 import bus2 from '@/assets/bus-2.jpg';
 import traveller1 from '@/assets/traveller-1.jpg';
 import heroBus from '@/assets/hero-bus.jpg';
@@ -10,7 +10,7 @@ export function FeaturedFleetSection() {
   const fleet = [
     {
       id: 1,
-      image: bus1,
+      image: luxurySleeperBus,
       title: 'Luxury AC Sleeper',
       capacity: '45 Seater • 2x1 Layout',
       price: 'From ₹18,000/day',

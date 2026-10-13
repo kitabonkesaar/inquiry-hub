@@ -13,6 +13,8 @@ import bus1 from '@/assets/bus-1.jpg';
 import bus2 from '@/assets/bus-2.jpg';
 import traveller1 from '@/assets/traveller-1.jpg';
 import heroBus from '@/assets/hero-bus.jpg';
+import luxurySleeperBus from '@/assets/luxury-sleeper-bus.jpg';
+import sleeperBusInterior from '@/assets/sleeper-bus-interior.jpg';
 
 // Initial pre-seeded buses
 const INITIAL_BUSES: MarketplaceBus[] = [
@@ -29,8 +31,8 @@ const INITIAL_BUSES: MarketplaceBus[] = [
     driverAllowancePerDay: 700,
     images: [
       heroBus,
-      bus1,
-      'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
+      luxurySleeperBus,
+      sleeperBusInterior,
     ],
     amenities: [
       'Central Air Conditioning',
@@ -105,7 +107,7 @@ const INITIAL_BUSES: MarketplaceBus[] = [
     driverAllowancePerDay: 500,
     images: [
       traveller1,
-      'https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?auto=format&fit=crop&w=1200&q=80',
+      bus1,
     ],
     amenities: [
       'Individual AC Vents',
