@@ -1,11 +1,13 @@
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { 
   ArrowLeft, Users, Snowflake, Wind, Check, Calendar, Phone, MessageCircle, 
   RefreshCw, Wifi, Zap, Music, Armchair, Droplets, Tv, ShieldCheck, MapPin, 
-  Clock, CreditCard, Star, Grip, Share2
+  Clock, CreditCard, Star, Grip, Share2, Bus
 } from 'lucide-react';
 import { Layout } from '@/components/layout/Layout';
 import { useVehicles } from '@/hooks/useVehicles';
+import { vehicles as defaultVehicles } from '@/data/vehicles';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -57,10 +59,14 @@ const getAmenityIcon = (name: string) => {
 
 export default function VehicleDetailPage() {
   const { id } = useParams();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const { vehicles: allVehicles, loading } = useVehicles();
-  const vehicle = allVehicles.find((v) => v.id === id);
+  
+  // Safe lookup with static fallback
+  const vehicle = allVehicles.find((v) => String(v.id) === String(id)) || 
+                  defaultVehicles.find((v) => String(v.id) === String(id));
 
-  if (loading) {
+  if (loading && !vehicle) {
     return (
       <Layout>
         <div className="flex flex-col items-center justify-center min-h-[60vh] text-muted-foreground">
@@ -77,7 +83,7 @@ export default function VehicleDetailPage() {
         <section className="py-24">
           <div className="container mx-auto px-4 lg:px-8 text-center max-w-md">
             <div className="bg-muted/30 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-              <BusIcon className="w-10 h-10 text-muted-foreground" />
+              <Bus className="w-10 h-10 text-muted-foreground" />
             </div>
             <h1 className="text-2xl font-bold text-foreground mb-4">Vehicle Not Found</h1>
             <p className="text-muted-foreground mb-8">The vehicle you're looking for might have been removed or is temporarily unavailable.</p>
@@ -90,10 +96,15 @@ export default function VehicleDetailPage() {
     );
   }
 
-  const availability = availabilityConfig[vehicle.availability];
+  const availability = (vehicle.availability && availabilityConfig[vehicle.availability]) || availabilityConfig.available;
   const similarVehicles = allVehicles
-    .filter((v) => v.id !== vehicle.id && v.type === vehicle.type)
+    .filter((v) => String(v.id) !== String(vehicle.id) && v.type === vehicle.type)
     .slice(0, 3);
+
+  // Safe images, amenities & idealFor
+  const vehicleImages = (vehicle.images && vehicle.images.length > 0) ? vehicle.images : ['/placeholder.svg'];
+  const vehicleAmenities = vehicle.amenities || [];
+  const vehicleIdealFor = vehicle.idealFor || [];
 
   // Default layout if not present
   const rawLayout = (vehicle as any).bus_layout || '2x2';
@@ -103,7 +114,7 @@ export default function VehicleDetailPage() {
     ? '2x1 Sleeper'
     : '2x2 Sleeper';
 
-  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const priceClean = parseInt(String(vehicle.pricePerDay || '').replace(/[^0-9]/g, '')) || 18000;
 
   // Retrieve or formulate marketplace bus
   const marketplaceBus: MarketplaceBus = marketplaceStore.getBusById(vehicle.id) || {
@@ -113,18 +124,18 @@ export default function VehicleDetailPage() {
     category: vehicle.category as any,
     layout: busLayout as any,
     seatingCapacity: vehicle.seatingCapacity,
-    pricePerDay: parseInt(String(vehicle.pricePerDay).replace(/[^0-9]/g, '')) || 18000,
+    pricePerDay: priceClean,
     pricePerKm: 45,
     minKmPerDay: 250,
     driverAllowancePerDay: 600,
-    images: vehicle.images,
-    amenities: vehicle.amenities,
+    images: vehicleImages,
+    amenities: vehicleAmenities,
     description: vehicle.description,
     rating: 4.9,
     reviewCount: 32,
     ownerId: 'owner-1',
     ownerName: 'Kalinga Express Lines',
-    ownerPhone: '+91 94370 12345',
+    ownerPhone: '+91 82495 29220',
     registrationNumber: 'OD-02-CB-9090',
     location: 'Bhubaneswar, Odisha',
     status: 'approved',
@@ -160,7 +171,7 @@ export default function VehicleDetailPage() {
               <div className="rounded-2xl overflow-hidden border bg-background shadow-sm">
                 <Carousel className="w-full">
                   <CarouselContent>
-                    {vehicle.images.map((image, index) => (
+                    {vehicleImages.map((image, index) => (
                       <CarouselItem key={index}>
                         <div className="aspect-video relative group">
                           <img
@@ -177,7 +188,7 @@ export default function VehicleDetailPage() {
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  {vehicle.images.length > 1 && (
+                  {vehicleImages.length > 1 && (
                     <>
                       <CarouselPrevious className="left-4" />
                       <CarouselNext className="right-4" />
@@ -275,7 +286,7 @@ export default function VehicleDetailPage() {
                   <Star className="w-5 h-5 text-primary" /> Premium Amenities
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-8">
-                  {vehicle.amenities.map((amenity) => {
+                  {vehicleAmenities.map((amenity) => {
                     const Icon = getAmenityIcon(amenity);
                     return (
                       <div key={amenity} className="flex items-center gap-3 group">
@@ -290,16 +301,18 @@ export default function VehicleDetailPage() {
               </div>
 
               {/* Ideal For */}
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Perfect For</h3>
-                <div className="flex flex-wrap gap-2">
-                  {vehicle.idealFor.map((item) => (
-                    <Badge key={item} variant="secondary" className="px-4 py-2 text-sm font-normal bg-muted hover:bg-muted/80">
-                      {item}
-                    </Badge>
-                  ))}
+              {vehicleIdealFor.length > 0 && (
+                <div>
+                  <h3 className="text-lg font-semibold mb-4">Perfect For</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {vehicleIdealFor.map((item) => (
+                      <Badge key={item} variant="secondary" className="px-4 py-2 text-sm font-normal bg-muted hover:bg-muted/80">
+                        {item}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Seat & Cabin Layout Visualizer */}
               <SeatLayoutVisualizer

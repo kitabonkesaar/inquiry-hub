@@ -16,20 +16,23 @@ const availabilityConfig = {
 };
 
 export function VehicleCard({ vehicle }: VehicleCardProps) {
-  const availability = availabilityConfig[vehicle.availability] || availabilityConfig.available;
+  const availability = (vehicle?.availability && availabilityConfig[vehicle.availability]) || availabilityConfig.available;
 
   // Ensure Indian currency formatting (e.g. ₹15,000)
-  const numericPrice = parseInt(vehicle.pricePerDay.replace(/[^\d]/g, ''), 10);
+  const priceStr = String(vehicle?.pricePerDay || '');
+  const numericPrice = parseInt(priceStr.replace(/[^\d]/g, ''), 10);
   const formattedPrice = !isNaN(numericPrice) && numericPrice > 0
     ? `₹${numericPrice.toLocaleString('en-IN')}`
-    : vehicle.pricePerDay;
+    : (vehicle?.pricePerDay || 'On Request');
+
+  const mainImage = (vehicle?.images && vehicle.images.length > 0) ? vehicle.images[0] : '/placeholder.svg';
 
   return (
     <div className="group rounded-2xl bg-card border border-border shadow-xs hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col h-full hover:border-secondary/40">
       {/* 16:9 Image Container */}
       <div className="relative aspect-video bg-muted overflow-hidden">
         <img
-          src={vehicle.images[0]}
+          src={mainImage}
           alt={vehicle.name}
           loading="lazy"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -78,14 +81,14 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
 
           {/* Amenities Preview */}
           <div className="flex flex-wrap gap-1.5 mb-4">
-            {vehicle.amenities.slice(0, 3).map((amenity) => (
+            {(vehicle?.amenities || []).slice(0, 3).map((amenity) => (
               <span key={amenity} className="px-2 py-0.5 rounded-md bg-muted/60 text-muted-foreground text-[11px]">
                 {amenity}
               </span>
             ))}
-            {vehicle.amenities.length > 3 && (
+            {(vehicle?.amenities || []).length > 3 && (
               <span className="px-1.5 py-0.5 rounded-md bg-muted/40 text-muted-foreground text-[11px]">
-                +{vehicle.amenities.length - 3} more
+                +{(vehicle?.amenities || []).length - 3} more
               </span>
             )}
           </div>

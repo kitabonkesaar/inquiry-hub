@@ -96,13 +96,13 @@ export default function VehiclesPage() {
     // Sorting
     return result.sort((a, b) => {
       if (sortBy === 'price-low') {
-        const priceA = parseInt(a.pricePerDay.replace(/[^\d]/g, '')) || 0;
-        const priceB = parseInt(b.pricePerDay.replace(/[^\d]/g, '')) || 0;
+        const priceA = parseInt(String(a.pricePerDay || '').replace(/[^\d]/g, '')) || 0;
+        const priceB = parseInt(String(b.pricePerDay || '').replace(/[^\d]/g, '')) || 0;
         return priceA - priceB;
       }
       if (sortBy === 'price-high') {
-        const priceA = parseInt(a.pricePerDay.replace(/[^\d]/g, '')) || 0;
-        const priceB = parseInt(b.pricePerDay.replace(/[^\d]/g, '')) || 0;
+        const priceA = parseInt(String(a.pricePerDay || '').replace(/[^\d]/g, '')) || 0;
+        const priceB = parseInt(String(b.pricePerDay || '').replace(/[^\d]/g, '')) || 0;
         return priceB - priceA;
       }
       if (sortBy === 'capacity-low') {
