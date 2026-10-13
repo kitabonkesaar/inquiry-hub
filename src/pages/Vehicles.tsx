@@ -22,6 +22,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from '@/lib/utils';
+import { SEOHead } from '@/components/seo/SEOHead';
+import { getBreadcrumbSchema } from '@/components/seo/schemaData';
 
 const filterOptions = {
   type: [
@@ -141,6 +143,15 @@ export default function VehiclesPage() {
 
   return (
     <Layout>
+      <SEOHead
+        title="Bus & Tempo Traveller Fleet in Odisha | 12 to 55 Seater | RentAnyBus"
+        description="Explore 150+ verified buses & tempo travellers in Odisha. AC Sleeper coaches, Volvo multi-axle, pushback coaches & Force Urbania available for charter."
+        canonicalPath="/vehicles"
+        jsonLd={getBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Fleet Catalog', path: '/vehicles' }
+        ])}
+      />
       {/* Page Header */}
       <section className="bg-primary text-primary-foreground py-10 md:py-14 border-b border-white/10">
         <div className="container mx-auto px-4 lg:px-8">

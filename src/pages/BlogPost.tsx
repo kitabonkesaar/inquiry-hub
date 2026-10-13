@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
+import { SEOHead } from "@/components/seo/SEOHead";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -64,6 +65,33 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title={`${post.title} | RentAnyBus Blog`}
+        description={post.meta_description || post.excerpt || post.title}
+        canonicalPath={`/blog/${post.slug}`}
+        ogImage={post.featured_image || 'https://www.rentanybus.com/og-image.png'}
+        ogType="article"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: post.title,
+          description: post.meta_description || post.excerpt || post.title,
+          image: post.featured_image || 'https://www.rentanybus.com/og-image.png',
+          datePublished: post.published_at,
+          author: {
+            '@type': 'Person',
+            name: post.author?.name || 'RentAnyBus Travel Desk',
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'RentAnyBus',
+            logo: {
+              '@type': 'ImageObject',
+              url: 'https://www.rentanybus.com/logo.png',
+            },
+          },
+        }}
+      />
       <Header />
       <main className="flex-grow pt-24 pb-16">
         <article className="container mx-auto px-4 max-w-4xl">

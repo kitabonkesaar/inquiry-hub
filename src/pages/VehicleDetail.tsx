@@ -25,6 +25,8 @@ import { AvailabilityCalendar } from '@/components/vehicles/AvailabilityCalendar
 import { BookingModal } from '@/components/booking/BookingModal';
 import { marketplaceStore } from '@/services/marketplaceStore';
 import { MarketplaceBus } from '@/types/marketplace';
+import { SEOHead } from '@/components/seo/SEOHead';
+import { getVehicleProductSchema, getBreadcrumbSchema } from '@/components/seo/schemaData';
 
 const availabilityConfig = {
   available: { 
@@ -147,6 +149,21 @@ export default function VehicleDetailPage() {
 
   return (
     <Layout>
+      <SEOHead
+        title={`${vehicle.name} Rental (${vehicle.seatingCapacity} Seater) | RentAnyBus`}
+        description={`Rent ${vehicle.name} in Odisha. ${vehicle.seatingCapacity} seater, ${vehicle.category.toUpperCase()}, ${vehicle.amenities.slice(0, 3).join(', ')}. Starting at ${vehicle.pricePerDay}/day.`}
+        canonicalPath={`/vehicles/${vehicle.id}`}
+        ogImage={vehicleImages[0]}
+        ogType="product"
+        jsonLd={[
+          getVehicleProductSchema(vehicle),
+          getBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Fleet', path: '/vehicles' },
+            { name: vehicle.name, path: `/vehicles/${vehicle.id}` },
+          ]),
+        ]}
+      />
       {/* Breadcrumb Area */}
       <div className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-10">
         <div className="container mx-auto px-4 lg:px-8 py-3">

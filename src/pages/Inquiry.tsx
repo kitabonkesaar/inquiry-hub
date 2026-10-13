@@ -9,6 +9,8 @@ import { Label } from '@/components/ui/label';
 import { vehicles } from '@/data/vehicles';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
+import { SEOHead } from '@/components/seo/SEOHead';
+import { getBreadcrumbSchema } from '@/components/seo/schemaData';
 
 export default function InquiryPage() {
   const [searchParams] = useSearchParams();
@@ -111,6 +113,15 @@ export default function InquiryPage() {
 
   return (
     <Layout>
+      <SEOHead
+        title="Get Bus Rental Quote in Odisha | Transparent Charter Rates | RentAnyBus"
+        description="Request a free custom quote for bus or tempo traveller rental in Odisha. Transparent per-km and per-day pricing for weddings, tours, school picnics & corporate trips."
+        canonicalPath="/inquiry"
+        jsonLd={getBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Get a Quote', path: '/inquiry' },
+        ])}
+      />
       {/* Hero */}
       <section className="bg-primary text-primary-foreground py-12 md:py-16 border-b border-white/10">
         <div className="container mx-auto px-4 lg:px-8">

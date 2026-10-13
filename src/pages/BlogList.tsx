@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Loader2, ChevronLeft, ChevronRight } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { SEOHead } from "@/components/seo/SEOHead";
+import { getBreadcrumbSchema } from "@/components/seo/schemaData";
 
 const BlogList = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -33,6 +35,15 @@ const BlogList = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title="Odisha Bus Rental & Travel Guides Blog | RentAnyBus"
+        description="Discover expert advice on planning group trips in Odisha, bus seating capacity charts, wedding transit tips, Jagannath Puri pilgrimage guides & pricing."
+        canonicalPath="/blog"
+        jsonLd={getBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Blog', path: '/blog' },
+        ])}
+      />
       <Header />
       <main className="flex-grow pt-24 pb-16">
         <div className="container mx-auto px-4">

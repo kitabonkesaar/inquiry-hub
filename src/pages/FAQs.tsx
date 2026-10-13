@@ -8,6 +8,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { SEOHead } from '@/components/seo/SEOHead';
+import { getFAQSchema, getBreadcrumbSchema } from '@/components/seo/schemaData';
 
 const faqs = [
   {
@@ -110,8 +112,22 @@ const faqs = [
 ];
 
 export default function FAQsPage() {
+  const flatFaqs = faqs.flatMap((s) => s.questions);
+
   return (
     <Layout>
+      <SEOHead
+        title="Bus Rental FAQs & Pricing Guide Odisha | RentAnyBus"
+        description="Frequently asked questions about hiring buses & tempo travellers in Odisha. Learn about per-km rates, toll/driver allowances, cancellation terms & booking."
+        canonicalPath="/faqs"
+        jsonLd={[
+          getFAQSchema(flatFaqs),
+          getBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'FAQs & Help', path: '/faqs' },
+          ]),
+        ]}
+      />
       {/* Hero */}
       <section className="bg-primary text-primary-foreground py-12 md:py-16 border-b border-white/10">
         <div className="container mx-auto px-4 lg:px-8">

@@ -8,6 +8,7 @@ import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { SEOHead } from '@/components/seo/SEOHead';
 import { BookingChatModal } from '@/components/chat/BookingChatModal';
 import { TripReviewModal } from '@/components/reviews/TripReviewModal';
 import {
@@ -113,6 +114,11 @@ export default function CustomerProfile() {
 
   return (
     <Layout>
+      <SEOHead
+        title="My Charter Bookings & Profile | RentAnyBus"
+        description="View your active and past bus bookings, trip coordinator details, and invoices."
+        noindex={true}
+      />
       <div className="container mx-auto px-4 lg:px-8 py-8 max-w-5xl space-y-8">
         {/* Customer Header Card */}
         <div className="bg-card border rounded-2xl p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">

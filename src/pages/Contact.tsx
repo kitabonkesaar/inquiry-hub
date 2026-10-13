@@ -6,6 +6,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import { SEOHead } from '@/components/seo/SEOHead';
+import { getLocalBusinessSchema, getBreadcrumbSchema } from '@/components/seo/schemaData';
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -25,6 +27,18 @@ export default function ContactPage() {
 
   return (
     <Layout>
+      <SEOHead
+        title="Contact RentAnyBus | 24/7 Bus Booking Office Bhubaneswar Odisha"
+        description="Contact RentAnyBus for immediate bus and tempo traveller hire across Odisha. Call +91 82495 29220 or visit our office in Bhubaneswar. 24/7 dispatch support."
+        canonicalPath="/contact"
+        jsonLd={[
+          getLocalBusinessSchema(),
+          getBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Contact Us', path: '/contact' },
+          ]),
+        ]}
+      />
       {/* Hero */}
       <section className="bg-primary text-primary-foreground py-12 md:py-16 border-b border-white/10">
         <div className="container mx-auto px-4 lg:px-8">

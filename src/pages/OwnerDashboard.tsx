@@ -11,6 +11,7 @@ import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from 'sonner';
+import { SEOHead } from '@/components/seo/SEOHead';
 import {
   Bus,
   Briefcase,
@@ -86,6 +87,11 @@ export default function OwnerDashboard() {
 
   return (
     <Layout>
+      <SEOHead
+        title="Bus Operator Partner Dashboard | RentAnyBus"
+        description="Manage your bus charter bookings, driver assignments, payout settlements, and vehicle calendar."
+        noindex={true}
+      />
       <div className="container mx-auto px-4 lg:px-8 py-8 max-w-6xl space-y-8">
         {/* Owner Header Banner */}
         <div className="bg-gradient-to-r from-amber-500/15 via-amber-500/5 to-transparent border border-amber-500/20 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm">

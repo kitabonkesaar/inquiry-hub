@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
 import { marketplaceStore } from '@/services/marketplaceStore';
+import { SEOHead } from '@/components/seo/SEOHead';
 
 export default function AdminAuth() {
   const [isLogin, setIsLogin] = useState(true);
@@ -71,6 +72,11 @@ export default function AdminAuth() {
 
   return (
     <div className="min-h-screen hero-gradient flex items-center justify-center p-4">
+      <SEOHead 
+        title="Admin Portal | RentAnyBus"
+        description="Authorized administrative access only."
+        noindex={true}
+      />
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">

@@ -1,9 +1,20 @@
 import { Layout } from '@/components/layout/Layout';
 import { Shield, Users, Award, MapPin, Check } from 'lucide-react';
+import { SEOHead } from '@/components/seo/SEOHead';
+import { getBreadcrumbSchema } from '@/components/seo/schemaData';
 
 export default function About() {
   return (
     <Layout>
+      <SEOHead
+        title="About Us | Odisha's Premier Bus Charter Marketplace | RentAnyBus"
+        description="Learn about RentAnyBus, Odisha's verified group travel network. Connecting travelers with 150+ inspected buses and tempo travellers with transparent pricing."
+        canonicalPath="/about"
+        jsonLd={getBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'About Us', path: '/about' },
+        ])}
+      />
       {/* Hero Section */}
       <section className="bg-primary text-primary-foreground py-12 md:py-16 border-b border-white/10">
         <div className="container mx-auto px-4 lg:px-8">

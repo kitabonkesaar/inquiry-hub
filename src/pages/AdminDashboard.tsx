@@ -11,6 +11,7 @@ import { VehicleManagement } from '@/components/admin/VehicleManagement';
 import BlogManagement from '@/components/admin/blog/BlogManagement';
 import AdminSettings from '@/components/admin/settings/AdminSettings';
 import { RefreshCw } from 'lucide-react';
+import { SEOHead } from '@/components/seo/SEOHead';
 
 export default function AdminDashboard() {
   const { user, isStaff, loading: authLoading } = useAuth();
@@ -34,6 +35,11 @@ export default function AdminDashboard() {
 
   return (
     <AdminLayout activeSection={activeSection} onSectionChange={setActiveSection}>
+      <SEOHead 
+        title="Admin Control Center | RentAnyBus" 
+        description="Internal administration operations." 
+        noindex={true} 
+      />
       {activeSection === 'marketplace' && <MarketplaceAdminSection />}
       {activeSection === 'dashboard' && <DashboardOverview />}
       {activeSection === 'rental-leads' && <RentalLeads />}

@@ -17,6 +17,14 @@ const footerLinks = {
     { name: 'Wedding & Marriage Fleet', href: '/inquiry?trip=wedding' },
     { name: 'School & College Picnics', href: '/inquiry?trip=picnic' },
   ],
+  cities: [
+    { name: 'Bus Rental Bhubaneswar', href: '/bus-rental/bhubaneswar' },
+    { name: 'Bus Rental Puri (Jagannath Yatra)', href: '/bus-rental/puri' },
+    { name: 'Bus Rental Cuttack (Weddings)', href: '/bus-rental/cuttack' },
+    { name: 'Bhubaneswar to Puri Bus Hire', href: '/routes/bhubaneswar-to-puri' },
+    { name: 'Bhubaneswar to Konark Sun Temple', href: '/routes/bhubaneswar-to-konark' },
+    { name: 'Bhubaneswar to Chilika Lake Excursion', href: '/routes/bhubaneswar-to-chilika' },
+  ],
   portals: [
     { name: 'List Your Bus (Owner Portal)', href: '/owner' },
     { name: 'Operator Verification', href: '/owner' },
@@ -29,7 +37,7 @@ export function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground border-t border-white/10">
       <div className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-5">
             <Link to="/" className="flex items-center gap-2.5">
@@ -79,6 +87,20 @@ export function Footer() {
             <h4 className="font-semibold text-xs uppercase tracking-wider text-accent mb-4">Fleet</h4>
             <ul className="space-y-2.5 text-xs">
               {footerLinks.vehicles.map((link) => (
+                <li key={link.name}>
+                  <Link to={link.href} className="text-white/75 hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* City Hubs & Popular Routes */}
+          <div>
+            <h4 className="font-semibold text-xs uppercase tracking-wider text-accent mb-4">Cities & Routes</h4>
+            <ul className="space-y-2.5 text-xs">
+              {footerLinks.cities.map((link) => (
                 <li key={link.name}>
                   <Link to={link.href} className="text-white/75 hover:text-white transition-colors">
                     {link.name}
