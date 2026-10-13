@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
-import heroBus from '@/assets/bus-2.jpg';
+import quoteBannerBus from '@/assets/quote-banner-bus.png';
 
 interface LeadFormState {
   name: string;
@@ -112,11 +112,11 @@ export function LeadFormSection() {
               </div>
             </div>
 
-            <div className="relative mt-4 w-full rounded-2xl overflow-hidden shadow-xl border border-border">
+            <div className="relative mt-4 w-full rounded-2xl overflow-hidden shadow-xl border border-border group">
               <img
-                src={heroBus}
-                alt="Comfortable RentAnyBus coach"
-                className="w-full h-48 object-cover"
+                src={quoteBannerBus}
+                alt="RentAnyBus Luxury Fleet"
+                className="w-full h-52 sm:h-56 md:h-60 object-cover object-center transition-transform duration-500 group-hover:scale-102"
               />
             </div>
           </div>
